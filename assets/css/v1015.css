@@ -1,0 +1,106 @@
+/* Lumo Sites V10.15 — targeted mobile interaction, display and visual-quality fixes.
+   Previous desktop composition, approved menu, art, and laboratory controls remain intact. */
+
+/* Standalone, consistent SVG arrows instead of platform-dependent color emoji. */
+.v1015-arrow{display:inline-block;width:1em;height:1em;vertical-align:-.14em;margin-inline:.16em;flex:none;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* Compact mobile-only notice; no modal, no scroll blocking. */
+.v1015-mobile-notice{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom, 0px));z-index:101;max-width:420px;margin-inline:auto;padding:14px 48px 14px 17px;border:1px solid rgba(230,245,221,.28);border-radius:18px;background:rgba(9,31,24,.95);box-shadow:0 22px 62px rgba(0,0,0,.34);color:#f0f2e9;line-height:1.45;font-size:13px;opacity:0;transform:translateY(25px);pointer-events:none;transition:transform .45s cubic-bezier(.23,1,.32,1),opacity .35s ease;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.v1015-mobile-notice.is-visible{opacity:1;transform:none;pointer-events:auto}
+.v1015-mobile-notice button{position:absolute;right:10px;top:9px;width:34px;height:34px;display:grid;place-items:center;color:#e7efdf;background:rgba(240,245,226,.08);border:1px solid rgba(230,245,220,.2);border-radius:50%}
+.v1015-mobile-notice button svg{width:16px;height:16px}
+
+/* Mobile atmospheric engine: video plus live volumetric plumes; cursor trail tracks touch. */
+body.lumo-v1015 .v1015-smoke-video{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;opacity:.56;pointer-events:none;filter:contrast(1.18) saturate(.89)}
+body.lumo-v1015 .v1015-smoke-canvas{position:absolute;inset:0;z-index:16;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:1;filter:none!important}
+body.lumo-v1015 .v10-atmosphere .v1015-smoke-canvas{display:block!important}
+body.lumo-v1015 .v10-atmosphere .v1015-smoke-video{display:block!important}
+body.lumo-v1015[data-v10-theme='services'] .v1015-smoke-video{filter:hue-rotate(-12deg) saturate(.85) contrast(1.14)}
+body.lumo-v1015[data-v10-theme='works'] .v1015-smoke-video{filter:hue-rotate(-8deg) saturate(.95) contrast(1.19)}
+body.lumo-v1015[data-v10-theme='process'] .v1015-smoke-video{filter:hue-rotate(15deg) saturate(.85) contrast(1.17)}
+body.lumo-v1015[data-v10-theme='lab'] .v1015-smoke-video{filter:hue-rotate(43deg) saturate(1.12) contrast(1.12)}
+body.lumo-v1015[data-v10-theme='contact'] .v1015-smoke-video{filter:hue-rotate(-22deg) saturate(1.09) contrast(1.2)}
+@media(max-width:780px){
+ body.lumo-v1015:not(.home) .v10-atmosphere{position:fixed!important;inset:0!important;left:0!important;right:0!important;width:100%!important;height:100dvh!important;min-height:100svh!important;opacity:1;overflow:hidden!important;pointer-events:none;}
+ body.lumo-v1015:not(.home) .v10-atmosphere::before{opacity:.55!important;animation:none!important;transform:none!important;}
+ body.lumo-v1015:not(.home) .v10-atmosphere__veil{z-index:18;pointer-events:none;background:linear-gradient(180deg,rgba(3,15,13,.17),rgba(3,19,15,.04) 55%,rgba(3,16,14,.4))!important;}
+ body.lumo-v1015:not(.home) .v10-atmosphere canvas:not(.v1015-smoke-canvas){display:none!important;}
+ body.lumo-v1015 .v1015-smoke-video{opacity:.65}
+
+ /* MacBook stays inside the flow on iPhones: copy above, 3D model below. */
+ body.lumo-v1015.home .v8-macbook{display:flex!important;flex-direction:column!important;justify-content:flex-start!important;align-items:stretch!important;overflow:visible!important;min-height:0!important;height:auto!important;padding:116px 20px 72px!important;gap:12px!important;isolation:isolate;}
+ body.lumo-v1015.home .v8-macbook .chapter__inner--left{position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;align-self:stretch!important;flex:none!important;z-index:2!important;height:auto!important;min-height:0!important;display:block!important;}
+ body.lumo-v1015.home .v8-macbook .chapter__title{max-width:100%!important;margin:0!important;font-size:clamp(40px,10.5vw,62px)!important;line-height:1.04!important;overflow-wrap:break-word;}
+ body.lumo-v1015.home .v8-macbook .chapter__text{max-width:520px!important;margin:22px 0 8px!important;font-size:clamp(15px,3.9vw,18px)!important;line-height:1.57!important;}
+ body.lumo-v1015.home .v8-macbook .gltf-scene--macbook{position:relative!important;inset:auto!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;display:block!important;flex:none!important;align-self:center!important;width:min(100%,600px)!important;height:clamp(235px,73vw,420px)!important;min-height:0!important;max-height:none!important;margin:0 auto!important;overflow:visible!important;filter:drop-shadow(0 23px 24px rgba(0,0,0,.24))!important;}
+ body.lumo-v1015.home .v8-macbook .gltf-scene--macbook .gltf-scene__poster{display:block;object-fit:contain!important;image-rendering:auto!important;}
+
+ /* Mobile gallery: horizontal finger swipes, never vertical scroll hijacking. */
+ body.lumo-v1015.home .chapter--selected{display:block!important;min-height:0!important;height:auto!important;overflow:visible!important;padding:90px 0 70px!important;}
+ body.lumo-v1015.home .chapter--selected .chapter__inner--projects{position:relative!important;top:auto!important;left:auto!important;right:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:0 0 25px!important;transform:none!important;}
+ body.lumo-v1015.home .chapter--selected .selected__intro{padding:0 22px!important;}
+ body.lumo-v1015.home .chapter--selected .selected__viewport{width:100%!important;max-width:100%!important;margin-top:24px!important;overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;scroll-snap-type:x mandatory;scroll-padding:0 22px;}
+ body.lumo-v1015.home .chapter--selected .selected__viewport::-webkit-scrollbar{display:none}
+ body.lumo-v1015.home .chapter--selected .selected__track{transform:none!important;will-change:auto!important;width:max-content!important;min-width:100%!important;gap:16px!important;padding:0 22px 15px!important;}
+ body.lumo-v1015.home .chapter--selected .selected__project{flex:0 0 min(84vw,420px)!important;scroll-snap-align:center;max-width:calc(100vw - 36px);}
+ body.lumo-v1015.home .chapter--selected .selected__shot{height:clamp(180px,52vw,290px)!important;}
+ body.lumo-v1015.home .chapter--selected .selected__bottom{padding:14px 22px!important;}
+
+ /* On mobile let the phone's gesture behave intuitively; text never spills out. */
+ body.lumo-v1015.home .v8-device .chapter__inner--right{position:relative!important;padding:115px 22px 60px!important;width:100%!important;max-width:100%!important;}
+ body.lumo-v1015.home .v8-device .gltf-scene--phone{position:relative!important;inset:auto!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;display:block!important;transform:none!important;width:100%!important;max-width:580px!important;min-height:310px!important;height:clamp(335px,93vw,540px)!important;margin:27px auto 0!important;}
+ body.lumo-v1015.home .v8-device .phone-drag-hint{position:absolute!important;bottom:5px!important;left:0!important;right:0!important;top:auto!important;display:block!important;margin:0!important;padding:0 18px!important;width:100%!important;max-width:100%!important;text-align:center!important;white-space:normal!important;overflow-wrap:anywhere!important;font-size:clamp(11px,3.25vw,14px)!important;line-height:1.45!important;letter-spacing:0!important;}
+ body.lumo-v1015.home .v8-device .gltf-scene__canvas{touch-action:pan-y!important;}
+
+ /* Flip controls must be visible without hovering, with both sides operable. */
+ body.lumo-v1015 .v1015-flip-button{position:absolute;z-index:30;top:12px;right:12px;width:43px;height:43px;display:grid;place-items:center;flex:none;padding:0;border:1px solid rgba(246,248,234,.51);border-radius:50%;background:rgba(11,35,27,.87);color:#f8f6ef;box-shadow:0 6px 17px rgba(0,0,0,.21);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);cursor:pointer;touch-action:manipulation;transition:background .2s ease,transform .25s ease;}
+ body.lumo-v1015 .v1015-flip-button:active{transform:scale(.93)}
+ body.lumo-v1015 .v1015-flip-button svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+ body.lumo-v1015 .v1015-flip-back{display:none}
+ body.lumo-v1015 .is-flipped>.v1015-flip-front{display:none}
+ body.lumo-v1015 .is-flipped>.v1015-flip-back{display:grid}
+ body.lumo-v1015 .v1015-card-anchor{display:block;width:100%;height:100%;color:inherit;text-decoration:none;}
+ body.lumo-v1015 .selected__project{position:relative!important;}
+ body.lumo-v1015 .selected__project .selected__flip{position:relative;}
+ body.lumo-v1015 .selected__project.is-flipped .selected__flip-inner{transform:rotateY(180deg)!important;}
+ body.lumo-v1015 .selected__project .selected__flip-inner{transition:transform .62s cubic-bezier(.25,.8,.23,1)!important;}
+ body.lumo-v1015 .selected__project .selected__shot img{filter:none!important;image-rendering:auto!important;}
+ body.lumo-v1015 .portfolio-tile{position:relative!important;}
+ body.lumo-v1015 .portfolio-tile .v1015-card-anchor{position:absolute;inset:0}
+ body.lumo-v1015 .portfolio-tile.is-flipped .portfolio-tile__rotator{transform:rotateY(180deg)!important;}
+ body.lumo-v1015 .portfolio-tile__face--back{padding:18px!important;}
+ body.lumo-v1015 .portfolio-tile__back-content strong{font-size:clamp(20px,6.5vw,26px)!important;}
+ body.lumo-v1015 .portfolio-tile__description{font-size:clamp(13px,3.8vw,16px)!important;line-height:1.45!important;}
+ body.lumo-v1015 .portfolio-tile__open{min-height:38px!important;}
+ body.lumo-v1015 .portfolio-tile__media img{image-rendering:auto!important;filter:none!important;}
+ body.lumo-v1015 .service-flip{position:relative!important;isolation:isolate;min-height:375px!important;}
+ body.lumo-v1015 .service-flip .service-flip__inner{min-height:375px!important;}
+ body.lumo-v1015 .service-flip__front,.lumo-v1015 .service-flip__back{padding:clamp(18px,5vw,25px)!important;}
+ body.lumo-v1015 .service-flip__back{gap:9px!important;}
+ body.lumo-v1015 .service-flip__back h3{font-size:clamp(23px,6vw,31px)!important;padding-right:45px;}
+ body.lumo-v1015 .service-flip__back p{font-size:clamp(13px,3.65vw,15px)!important;line-height:1.42!important;}
+ body.lumo-v1015 .service-flip__bottom{gap:9px!important;flex-wrap:wrap!important;}
+ body.lumo-v1015 .service-flip__link{max-width:100%;white-space:normal!important;font-size:clamp(12px,3.2vw,14px)!important;}
+ body.lumo-v1015 .service-flip__toggle.v8-flip-toggle{display:grid!important;place-items:center!important;position:absolute!important;top:12px!important;right:12px!important;left:auto!important;bottom:auto!important;z-index:31!important;width:43px!important;height:43px!important;min-height:43px!important;margin:0!important;padding:0!important;border:1px solid rgba(246,248,234,.51)!important;border-radius:50%!important;background:rgba(11,35,27,.87)!important;color:#f8f6ef!important;opacity:1!important;font-size:0!important;letter-spacing:0!important;transform:none!important;}
+ body.lumo-v1015 .service-flip__toggle.v8-flip-toggle::before{content:''!important;display:block!important;width:21px;height:21px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f8f6ef' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 11a8 8 0 1 0-2.7 6'/%3E%3Cpath d='M20 4v7h-7'/%3E%3C/svg%3E")!important;background-size:contain!important;background-repeat:no-repeat!important;}
+ body.lumo-v1015 .service-flip__toggle.v8-flip-toggle::after{content:none!important;}
+ body.lumo-v1015 .service-flip.is-flipped>.service-flip__toggle{display:none!important;}
+ body.lumo-v1015 .service-flip.is-flipped>.v1015-flip-back{display:grid!important;}
+
+ /* A fixed-size virtual iframe keeps desktop/tablet CSS breakpoints even on iPhone. */
+ body.lumo-v1015.lab-parent .lab-viewer{overflow:hidden;}
+ body.lumo-v1015.lab-parent .lab-viewer__stage{position:relative!important;display:block!important;overflow:hidden!important;max-width:100%!important;margin:0 auto!important;transform:none!important;min-height:0!important;transition:height .32s ease!important;}
+ body.lumo-v1015.lab-parent .lab-viewer__stage iframe{position:absolute!important;top:0!important;left:0!important;right:auto!important;width:var(--v1015-frame-width,1280px)!important;height:var(--v1015-frame-height,900px)!important;min-width:0!important;max-width:none!important;transform:scale(var(--v1015-frame-scale,1))!important;transform-origin:0 0!important;border:0!important;}
+ body.lumo-v1015.lab-parent .lab-viewer__devices{flex-wrap:nowrap;}
+ body.lumo-v1015.lab-parent .lab-viewer__devices button{white-space:nowrap;}
+ body.lumo-v1015.lab-parent .lab-viewer__hint{max-width:100%;}
+}
+@media(min-width:781px){
+  /* Preserve all desktop flips as authored; no mobile-only buttons on desktop. */
+  .v1015-flip-button,.v1015-mobile-notice,.v1015-smoke-canvas,.v1015-smoke-video{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .v1015-mobile-notice{transition:none!important}
+ body.lumo-v1015 .v1015-smoke-canvas{display:none!important}
+ body.lumo-v1015 .v1015-smoke-video{display:none!important}
+}

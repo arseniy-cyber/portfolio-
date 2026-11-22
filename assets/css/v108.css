@@ -1,0 +1,219 @@
+/* LUMO Sites V10.8 — consolidating the user's last corrections.
+   The original V8 composition, menu, controls and routes are preserved. */
+
+/* PORTFOLIO — correct source aspect ratio (covers are 1800x1120), crisp type,
+   and fully working two-sided rotation, without GPU blur from parent scaling. */
+body.lumo-v108 .subpage--works .works-grid{
+  align-items:start;
+  gap:clamp(22px,2.4vw,34px)!important;
+  padding:22px 8px 74px!important;
+  background:linear-gradient(180deg,rgba(18,44,34,.08),rgba(24,34,34,.15))!important;
+  border:0!important;
+  border-radius:0!important;
+}
+body.lumo-v108 .subpage--works .portfolio-tile{
+  position:relative;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:1.235/1;
+  margin:0 auto!important;
+  transform:none!important;
+  filter:none!important;
+  perspective:1750px;
+  overflow:visible!important;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body.lumo-v108 .subpage--works .portfolio-tile__rotator{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  transform:none!important;
+  transform-style:preserve-3d!important;
+  transform-origin:50% 50%;
+  transition:transform .72s cubic-bezier(.19,.76,.23,1)!important;
+  will-change:auto!important;
+}
+@media (hover:hover) and (pointer:fine){
+  body.lumo-v108 .subpage--works .portfolio-tile:hover .portfolio-tile__rotator{
+    transform:rotateY(180deg)!important;
+  }
+}
+body.lumo-v108 .subpage--works .portfolio-tile.is-flipped .portfolio-tile__rotator,
+body.lumo-v108 .subpage--works .portfolio-tile:focus-visible .portfolio-tile__rotator{
+  transform:rotateY(180deg)!important;
+}
+body.lumo-v108 .subpage--works .portfolio-tile__face{
+  inset:0;
+  overflow:hidden!important;
+  backface-visibility:hidden!important;
+  -webkit-backface-visibility:hidden!important;
+  transform-style:flat;
+  transform:rotateY(0)!important;
+  border:1px solid rgba(230,239,224,.14);
+  border-radius:14px;
+  box-shadow:0 15px 42px rgba(0,0,0,.12);
+}
+body.lumo-v108 .subpage--works .portfolio-tile__face--back{
+  transform:rotateY(180deg)!important;
+  padding:clamp(16px,2vw,26px)!important;
+}
+body.lumo-v108 .subpage--works .portfolio-tile__face--back :is(strong,span){
+  filter:none!important;text-shadow:none!important;
+}
+body.lumo-v108 .subpage--works .portfolio-tile__media{
+  flex:1 1 auto;
+  min-height:0;
+  padding:0!important;
+  margin:0!important;
+  overflow:hidden!important;
+  background:#17261f!important;
+}
+body.lumo-v108 .subpage--works .portfolio-tile__media img{
+  width:100%!important;height:100%!important;
+  object-fit:cover!important;object-position:50% 50%!important;
+  display:block;transform:none!important;filter:none!important;
+  image-rendering:auto;
+}
+body.lumo-v108 .subpage--works .portfolio-tile__head{
+  flex:0 0 76px;
+  height:76px!important;min-height:76px!important;
+  padding:11px 17px!important;
+  justify-content:center;
+  gap:4px;
+}
+body.lumo-v108 .subpage--works .portfolio-tile__head strong{
+  font-size:clamp(19px,1.53vw,23px)!important;
+  line-height:1.16!important;
+  font-weight:700!important;
+  letter-spacing:-.035em!important;
+  filter:none!important;text-shadow:none!important;
+}
+body.lumo-v108 .subpage--works .portfolio-tile__head>span{
+  font-size:12.5px!important;
+  line-height:1.35!important;
+  font-weight:500!important;
+  letter-spacing:0!important;
+  color:#d1ddce!important;
+  text-shadow:none!important;
+}
+body.lumo-v108 .subpage--works .portfolio-tile__back-content{
+  gap:clamp(10px,1.6vw,20px);
+}
+body.lumo-v108 .subpage--works .portfolio-tile__back-content strong{
+  font-size:clamp(20px,2vw,27px)!important;
+  line-height:1.12!important;
+}
+body.lumo-v108 .subpage--works .portfolio-tile__description{
+  font-size:clamp(13px,1.15vw,16px)!important;
+  line-height:1.42!important;
+}
+body.lumo-v108 .subpage--works .portfolio-tile__open{
+  width:max-content!important;
+  max-width:100%;min-height:39px!important;
+  font-size:12px!important;
+  padding:9px 14px!important;
+}
+/* No anomalous green bands or divider rectangles between image and text. */
+body.lumo-v108 .subpage--works .portfolio-tile__media::before,
+body.lumo-v108 .subpage--works .portfolio-tile__media::after{
+  opacity:0!important;
+}
+
+/* ABOUT — retain premium photo and a warmer physical-looking book binding. */
+body.lumo-v108[data-v10-theme='about'] .v8-about-hero .about-hero__visual{
+  border:0!important;
+  border-radius:16px!important;
+  overflow:hidden;
+  background:#082017;
+  box-shadow:0 28px 75px rgba(0,0,0,.24)!important;
+}
+body.lumo-v108[data-v10-theme='about'] .v8-about-hero .about-hero__visual img{
+  width:100%;height:100%;object-fit:cover;object-position:48% 50%;
+  image-rendering:auto;
+}
+body.lumo-v108[data-v10-theme='about'] .v102-book{
+  box-shadow:8px 13px 0 -7px #7a573a,12px 19px 0 -9px #5c402b,0 28px 66px rgba(0,0,0,.21)!important;
+  border-radius:6px 20px 20px 6px;
+  isolation:isolate;
+}
+body.lumo-v108[data-v10-theme='about'] .v102-book::before{
+  content:''!important;display:block!important;
+  position:absolute;inset:0 auto 0 0;
+  width:27px;height:100%;z-index:4;pointer-events:none;
+  background:linear-gradient(90deg,#4d311f 0%,#6d492d 26%,#a77e56 49%,#7f593a 72%,rgba(91,60,35,.17) 100%)!important;
+  border-radius:6px 0 0 6px;
+  box-shadow:inset -3px 0 5px rgba(56,32,17,.3),3px 0 9px rgba(61,37,23,.16);
+}
+
+/* PROCESS — identical atmospheric video source and vapor layers to Works,
+   only shifted toward emerald and burgundy. No hard-edged opaque gradients. */
+body.lumo-v108[data-v10-theme='process'] .v8-process-hero{
+  isolation:isolate;
+  background:#0a1e18!important;
+}
+body.lumo-v108[data-v10-theme='process'] .v8-process-hero .v8-smoke-atmosphere{
+  z-index:-1!important;
+  inset:0!important;
+  background:linear-gradient(120deg,#092117,#1e3430 55%,#382535)!important;
+}
+body.lumo-v108[data-v10-theme='process'] .v8-process-hero .v8-smoke-atmosphere video{
+  display:block!important;opacity:.97!important;
+  filter:hue-rotate(10deg) saturate(1.1) contrast(1.1) brightness(.75)!important;
+  object-fit:cover!important;
+  transform:scale(1.02)!important;
+}
+body.lumo-v108[data-v10-theme='process'] .v8-process-hero .v8-smoke-atmosphere canvas{
+  opacity:.8!important;mix-blend-mode:screen;
+}
+body.lumo-v108[data-v10-theme='process'] .v8-process-hero::after{
+  content:''!important;
+  z-index:-1;
+  background:linear-gradient(180deg,rgba(3,19,13,.32),transparent 24%,rgba(7,25,19,.36) 74%,rgba(7,24,18,.91))!important;
+}
+/* Pressed/expanded process cards must not gain the translucent pink outline. */
+body.lumo-v108 .v8-process-track .process-stage,
+body.lumo-v108 .v8-process-track .process-stage:is(:focus,:focus-visible,:hover,.is-open){
+  outline:none!important;
+  border-color:rgba(230,240,226,.20)!important;
+  -webkit-tap-highlight-color:transparent;
+}
+body.lumo-v108 .v8-process-track .process-stage:focus-visible{
+  box-shadow:0 18px 42px rgba(0,0,0,.16)!important;
+}
+
+/* Home gallery: leave a safety margin for 3D rotation without cropping. */
+body.lumo-v108.home .chapter--selected .selected__project{
+  overflow:visible!important;
+  padding:10px 12px!important;
+  perspective:1850px;
+}
+body.lumo-v108.home .chapter--selected .selected__flip{
+  overflow:visible!important;
+}
+body.lumo-v108.home .chapter--selected .selected__flip-inner{
+  transform-origin:center center;
+  transition:transform .75s cubic-bezier(.19,.77,.22,1);
+}
+
+/* Maintain a clean background with no bright block-edge lines. */
+body.lumo-v108[data-v10-theme='about'] .v8-about-body,
+body.lumo-v108[data-v10-theme='about'] .about-tech,
+body.lumo-v108[data-v10-theme='process'] .process-track{
+  box-shadow:none!important;
+}
+
+@media(max-width:1050px){
+  body.lumo-v108 .subpage--works .portfolio-tile{aspect-ratio:1.22/1}
+}
+@media(max-width:760px){
+  body.lumo-v108 .subpage--works .works-grid{padding:16px 0 60px!important;gap:22px!important}
+  body.lumo-v108 .subpage--works .portfolio-tile{aspect-ratio:1.19/1;max-width:530px}
+  body.lumo-v108 .subpage--works .portfolio-tile__head{height:68px!important;min-height:68px!important;flex-basis:68px!important}
+  body.lumo-v108 .subpage--works .portfolio-tile__head strong{font-size:clamp(18px,4.8vw,23px)!important}
+  body.lumo-v108[data-v10-theme='about'] .v102-book::before{width:17px}
+}
+@media(prefers-reduced-motion:reduce){
+  body.lumo-v108 .subpage--works .portfolio-tile__rotator{transition:none!important}
+}

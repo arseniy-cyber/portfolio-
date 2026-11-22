@@ -1,0 +1,123 @@
+/* LUMO SITES — tactile motion edition. Original skin on top of continuous 3D scroll cinema. */
+:root{--touch-ease:cubic-bezier(.2,.86,.18,1);--paper-ink:#0e261b;--lumo-bright:#e4f4d8}
+/* Real magnetism: gentle movement WITH the pointer; text never fades or disappears. */
+.magnetic,.pill,.header__cta,.filter,.menu-trigger,.lab-copy,.lab-viewer__devices button,.contact-form button[type=submit],.contact-result button{
+ position:relative;isolation:isolate;overflow:hidden;will-change:transform;
+ transform:translate3d(var(--mag-x,0px),var(--mag-y,0px),0);
+ transition:transform .47s var(--touch-ease),box-shadow .45s var(--touch-ease),border-color .3s,background-color .3s,color .3s;
+ -webkit-tap-highlight-color:transparent;
+}
+.pill,.header__cta,.filter,.lab-copy,.contact-form button[type=submit]{
+ border-radius:999px!important;
+ border:1px solid rgba(229,240,218,.42);
+ box-shadow:inset 0 1px 1px rgba(255,255,255,.19),inset 0 -2px 7px rgba(0,0,0,.09),0 5px 17px rgba(1,16,9,.12);
+}
+.pill::after,.header__cta::after,.filter::after,.lab-copy::after,.contact-form button[type=submit]::after,
+.menu-trigger::after,.lab-viewer__devices button::after,.contact-result button::after{
+ content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;
+ background:radial-gradient(circle at var(--light-x,50%) var(--light-y,50%),rgba(255,255,255,.32),transparent 56%);
+ opacity:.15;transition:opacity .35s ease;
+}
+.pill:hover::after,.header__cta:hover::after,.filter:hover::after,.lab-copy:hover::after,.contact-form button[type=submit]:hover::after,.menu-trigger:hover::after,.lab-viewer__devices button:hover::after{opacity:.95}
+.pill:hover,.header__cta:hover,.filter:hover,.lab-copy:hover,.contact-form button[type=submit]:hover{
+ box-shadow:inset 0 1px 2px rgba(255,255,255,.3),inset 0 -3px 12px rgba(19,54,26,.16),0 12px 30px rgba(3,20,12,.26),0 0 0 1px rgba(255,255,255,.1);
+}
+.pill,.header__cta{font-size:14px;font-weight:700;letter-spacing:-.015em;padding:16px 29px;min-height:50px}
+.pill--light,.pill--xl,.filter.is-active,.lab-copy{background:linear-gradient(155deg,#fbfff4,#dceccf 65%,#c6e2b8);color:#112c1d!important;border-color:#d0e8c5}
+.pill--light:hover,.pill--xl:hover{background:linear-gradient(135deg,#f3fff1,#c5e8c4);color:#0b2117!important}
+.pill--ghost,.header__cta{background:linear-gradient(155deg,rgba(24,52,37,.84),rgba(7,22,14,.73));color:#f2f5ea!important;border-color:rgba(237,244,228,.3)}
+.pill--ghost:hover,.header__cta:hover{background:linear-gradient(155deg,#2c4835,#182b20);color:#fffef5!important;border-color:rgba(232,244,219,.67)}
+.pill--xl{min-height:66px;padding:22px 39px}
+.filter{background:transparent;border-color:rgba(218,234,218,.38);padding:10px 23px;min-height:44px;color:rgba(234,238,226,.84);font-weight:650}
+.filter:hover{color:#fff;border-color:rgba(237,243,222,.8)}.filter.is-active:hover{color:#102a1b}
+.menu-trigger{width:47px;height:47px;margin-left:0;border-radius:50%;border:1px solid rgba(234,244,231,.32);background:radial-gradient(circle at 30% 20%,rgba(156,189,163,.16),transparent 70%),rgba(13,31,22,.8);box-shadow:inset 0 1px 1px rgba(255,255,255,.09),0 5px 25px rgba(0,0,0,.15)}
+.menu-trigger:hover{background-color:rgba(39,65,47,.95);box-shadow:inset 0 1px 2px rgba(255,255,255,.17),0 14px 22px rgba(0,0,0,.26)}
+.menu-trigger span{background:#f5fff0;height:2px;border-radius:2px}
+/* Brand accent in navigation, compact and confident */
+.header{border-radius:15px;box-shadow:0 18px 50px rgba(2,13,7,.22);background:rgba(7,25,17,.88)}
+.header__links a{position:relative;font-weight:650}
+.header__links a::after{content:"";position:absolute;left:0;right:100%;bottom:-7px;height:1px;background:#d8f0c9;transition:right .32s var(--touch-ease)}
+.header__links a:hover::after{right:0}
+.menu-panel{border-radius:17px;border:1px solid rgba(207,224,206,.65);box-shadow:0 45px 90px rgba(0,0,0,.5)}
+.menu-panel nav a{letter-spacing:-.045em}
+/* Keep microcopy only if it actually communicates a role. */
+.eyebrow{font-size:12px;font-weight:650;letter-spacing:.045em;text-transform:none}
+.footer__pitch{font-size:16px;color:rgba(237,244,228,.82)}
+/* New compact editorial cards with real screenshot-derived visuals. Flips 180 degrees in 3D. */
+.works-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 22px;align-items:start}
+.works-grid__cell{min-width:0}.works-grid__cell[hidden]{display:none!important}
+.portfolio-tile{display:block;position:relative;width:100%;height:clamp(338px,29vw,430px);perspective:1700px;border-radius:15px;outline-offset:7px;isolation:isolate;cursor:pointer}
+.portfolio-tile__rotator{position:relative;display:block;width:100%;height:100%;border-radius:inherit;transform-style:preserve-3d;transition:transform .87s cubic-bezier(.16,.8,.19,1);will-change:transform}
+@media(hover:hover) and (pointer:fine){.portfolio-tile:hover .portfolio-tile__rotator{transform:rotateY(180deg)}}
+.portfolio-tile:focus-visible .portfolio-tile__rotator,.portfolio-tile.is-flipped .portfolio-tile__rotator{transform:rotateY(180deg)}
+.portfolio-tile__face{position:absolute;inset:0;display:flex;flex-direction:column;border-radius:inherit;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 19px 52px rgba(0,0,0,.15);border:1px solid rgba(236,242,229,.12)}
+.portfolio-tile__face--front{background:#12291f;color:#f4f4eb}
+.portfolio-tile__media{display:block;position:relative;width:100%;flex:1;min-height:0;overflow:hidden;background:#0f241b}
+.portfolio-tile__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 68%,rgba(2,12,8,.15));pointer-events:none}
+.portfolio-tile__media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.001);transition:transform .85s var(--touch-ease);filter:saturate(1.06)}
+@media(hover:hover) and (pointer:fine){.portfolio-tile:hover .portfolio-tile__media img{transform:scale(1.055)}}
+.portfolio-tile__head{display:flex;flex-direction:column;justify-content:center;gap:5px;min-height:102px;padding:17px 19px 20px;min-width:0;background:linear-gradient(120deg,#10271e,#192c22)}
+.portfolio-tile__head strong{display:block;font-size:clamp(21px,1.7vw,28px);font-weight:800;line-height:1.07;letter-spacing:-.055em;overflow-wrap:anywhere}
+.portfolio-tile__head>span{font-size:12px;color:#b1cdb9;line-height:1.4}
+.portfolio-tile__face--back{transform:rotateY(180deg);background:linear-gradient(135deg,#5f2b3b,#351e31 56%,#122f29);color:#f7f0e5;justify-content:space-between;padding:clamp(25px,3vw,42px)}
+.portfolio-tile[data-project="iphone"] .portfolio-tile__face--back,.portfolio-tile[data-project="detailing"] .portfolio-tile__face--back{background:linear-gradient(135deg,#153c35,#10241e 64%,#243c2c)}
+.portfolio-tile[data-project="sad-kofe"] .portfolio-tile__face--back,.portfolio-tile[data-project="shurubor"] .portfolio-tile__face--back{background:linear-gradient(130deg,#574132,#2d2a22 68%,#1c2822)}
+.portfolio-tile[data-project="mmrsiq"] .portfolio-tile__face--back,.portfolio-tile[data-project="niks"] .portfolio-tile__face--back{background:linear-gradient(140deg,#49233b,#251827 68%,#172d2b)}
+.portfolio-tile__back-content{display:flex;flex-direction:column;gap:19px;min-width:0}
+.portfolio-tile__back-content strong{display:block;font-size:clamp(26px,2.7vw,43px);font-weight:750;letter-spacing:-.055em;line-height:1.03;overflow-wrap:anywhere}
+.portfolio-tile__description{display:block;font-size:clamp(15px,1.3vw,18px);line-height:1.5;max-width:330px;color:rgba(245,242,233,.85);overflow-wrap:anywhere}
+.portfolio-tile__open{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid rgba(255,255,255,.28);padding-top:17px;font-size:14px;font-weight:650}
+.portfolio-tile__orb{display:block;width:37px;height:37px;border-radius:50%;background:radial-gradient(circle at 30% 20%,#fafff3,#cae8bc 65%,#b8d5a9);box-shadow:0 0 25px rgba(217,255,191,.3);transition:transform .4s var(--touch-ease)}
+@media(hover:hover){.portfolio-tile:hover .portfolio-tile__orb{transform:scale(1.22)}}
+.portfolio-tile:focus-visible{outline:3px solid #e2f9d7}
+/* Selected works on the scroll film: distinct polished posters, with no edge crop. */
+.selected__shot{background:#0d241b;padding:0;box-shadow:0 23px 62px rgba(2,24,11,.25);border:1px solid rgba(13,46,26,.15);border-radius:14px}
+.selected__shot img{width:100%;height:100%;object-fit:contain;filter:none;transition:transform .85s var(--touch-ease)}
+.selected__project:hover .selected__shot img{transform:scale(1.028)}
+.selected__caption{padding-top:16px}
+.selected__caption strong{font-weight:770}
+/* Service action buttons and interactive controls follow same polished system. */
+.lab-copy,.contact-form button[type=submit]{border-radius:999px;padding:13px 22px}
+.lab-viewer__devices button{border-radius:999px!important}
+.lab-viewer__devices{border-radius:999px}
+.filter-bar{gap:9px;flex-wrap:wrap}
+/* Word wrapping, screenshot framing and contrast on narrow screens */
+@media(max-width:1160px){.works-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.portfolio-tile{height:clamp(352px,37vw,455px)}}
+@media(max-width:760px){
+ .works-grid{grid-template-columns:1fr;gap:22px}
+ .portfolio-tile{height:min(118vw,510px);min-height:330px}
+ .portfolio-tile__head{min-height:93px}.portfolio-tile__head strong{font-size:26px}
+ .selected__shot{height:min(40vh,330px);padding:0}
+ .header{border-radius:13px}.menu-trigger{width:40px;height:40px}
+ .header__cta{font-size:12px;padding:10px 15px;min-height:40px}
+ .filter{font-size:12px;padding:9px 18px}
+}
+@media(max-width:390px){.portfolio-tile{min-height:310px;height:112vw}.portfolio-tile__head strong{font-size:23px}}
+@media(hover:none){.portfolio-tile:active{outline:1px solid rgba(240,244,232,.4)}}
+@media(prefers-reduced-motion:reduce){.magnetic,.pill,.portfolio-tile__rotator,.portfolio-tile__media img{transition:none!important}.portfolio-tile__face--front,.portfolio-tile__face--back{backface-visibility:visible}.portfolio-tile.is-flipped .portfolio-tile__rotator{transform:rotateY(180deg)}}
+/* Three new connected scroll chapters with the user's photographic brick, MacBook and folding iPhone assets. */
+.chapter--build{min-height:180svh;align-items:flex-start}
+.chapter--build>.chapter__inner{position:sticky;top:0;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:15vh;padding-bottom:15vh}
+.chapter--studio{min-height:145svh}
+.chapter--device{min-height:175svh}
+.chapter--build .chapter__title,.chapter--studio .chapter__title,.chapter--device .chapter__title{font-size:clamp(50px,6vw,94px);line-height:1.02;max-width:820px}
+.chapter--build .chapter__text,.chapter--studio .chapter__text,.chapter--device .chapter__text{max-width:450px}
+.brick-wall{position:absolute;right:clamp(30px,7vw,110px);top:57svh;width:min(50vw,670px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;perspective:1000px;z-index:4}
+.brick-step{display:flex;justify-content:center;align-items:center;min-height:82px;padding:13px 10px;background-image:linear-gradient(155deg,rgba(34,10,12,.16),rgba(11,16,13,.38)),url('../img/brick-texture.webp');background-size:cover;background-position:50% 47%;border:2px solid rgba(223,195,168,.35);box-shadow:inset 0 4px 11px rgba(255,239,202,.17),inset 0 -6px 15px rgba(35,16,8,.49),8px 14px 29px rgba(1,8,3,.4);font-size:clamp(13px,1.15vw,19px);font-weight:800;text-align:center;letter-spacing:-.035em;color:#fff6e6;text-shadow:0 2px 3px rgba(21,10,4,.95),0 -1px rgba(255,231,207,.4);will-change:transform,opacity}
+.brick-step:nth-child(2),.brick-step:nth-child(5){border-color:rgba(200,228,178,.37)}
+@media(max-width:960px){.brick-wall{width:calc(100% - 50px);right:25px;top:66svh}.chapter--build .chapter__title{font-size:clamp(38px,7vw,70px)}}
+@media(max-width:760px){.chapter--build{min-height:180svh}.chapter--build>.chapter__inner{position:sticky;top:0;min-height:100svh;justify-content:flex-start;padding-top:120px}.chapter--build .chapter__title,.chapter--studio .chapter__title,.chapter--device .chapter__title{font-size:clamp(41px,9vw,68px)!important}.brick-wall{width:calc(100% - 30px);right:15px;top:66svh;gap:6px}.brick-step{min-height:64px;font-size:clamp(10px,2.6vw,15px);padding:8px 5px;border-width:1px}}
+.brick-step{background-image:linear-gradient(145deg,rgba(41,10,17,.17),rgba(21,25,14,.34)),url('../img/brick-face.webp');background-size:cover;box-shadow:inset 0 4px 7px rgba(255,243,213,.28),inset 0 -11px 15px rgba(34,19,13,.47),8px 9px 0 rgba(62,33,28,.8),12px 17px 28px rgba(0,0,0,.44);border-color:rgba(238,201,173,.38)}
+.brick-step:nth-child(2),.brick-step:nth-child(5){background-image:linear-gradient(145deg,rgba(20,55,31,.34),rgba(16,26,20,.48)),url('../img/brick-face.webp')}
+/* Home horizontal portfolio: the same 180° readable project reveal, integrated with native scroll. */
+.selected__flip{height:clamp(270px,41vh,485px);perspective:1600px;position:relative;border-radius:14px}
+.selected__flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.17,.82,.18,1)}
+.selected__flip .selected__shot,.selected__reveal{position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;overflow:hidden}
+.selected__reveal{transform:rotateY(180deg);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:16px;padding:clamp(25px,4vw,60px);color:#f4f4ea;background:radial-gradient(circle at 88% 16%,rgba(160,89,111,.38),transparent 42%),linear-gradient(145deg,#502637,#152d25 90%);box-shadow:0 28px 66px rgba(0,0,0,.2)}
+.selected__reveal h3{font-size:clamp(27px,3vw,53px);line-height:1.02;letter-spacing:-.055em;margin:0}
+.selected__reveal p{font-size:clamp(15px,1.4vw,20px);line-height:1.5;color:#e4e8d9;margin:0;max-width:360px}
+.selected__reveal-action{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f5fff0,#c6e5bb);color:#102c1b;font-weight:750;font-size:14px;min-height:48px;padding:12px 25px;border-radius:999px;margin-top:13px}
+@media(hover:hover) and (pointer:fine){.selected__project:hover .selected__flip-inner{transform:rotateY(180deg)}}
+.selected__project:focus-visible .selected__flip-inner,.selected__project.is-flipped .selected__flip-inner{transform:rotateY(180deg)}
+@media(max-width:760px){.selected__flip{height:min(39vh,320px)}.selected__reveal{padding:24px}.selected__reveal h3{font-size:28px}}
+@media(prefers-reduced-motion:reduce){.selected__flip-inner{transition:none}}

@@ -1,0 +1,6 @@
+/* MacBook update: actual uploaded user model with rounded image corners. */
+body.home .v8-macbook .gltf-scene--macbook .gltf-scene__poster{opacity:1!important;object-fit:contain!important}
+body.home .v8-macbook .gltf-scene--macbook.has-webgl .gltf-scene__poster{opacity:0!important}
+body.home .v8-macbook .gltf-scene--macbook .gltf-scene__canvas{opacity:0!important}
+body.home .v8-macbook .gltf-scene--macbook.has-webgl .gltf-scene__canvas{opacity:1!important}
+body.home .v8-macbook .gltf-scene--macbook{filter:drop-shadow(0 42px 58px rgba(0,0,0,.34))!important}

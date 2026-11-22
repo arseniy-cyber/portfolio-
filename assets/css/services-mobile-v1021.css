@@ -1,0 +1,75 @@
+/* V10.21: isolated mobile service-card reconstruction. Desktop and other pages untouched. */
+@media(max-width:780px){
+ body.v1021-services-mobile .services-flip-grid .v1021-service{
+   position:relative!important;transform:none!important;perspective:1400px!important;
+   overflow:visible!important;isolation:isolate!important;
+   touch-action:pan-y!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service .service-flip__inner{
+   position:relative!important;transform:rotateY(0deg)!important;
+   transform-style:preserve-3d!important;-webkit-transform-style:preserve-3d!important;
+   transform-origin:50% 50%!important;transition:transform .69s cubic-bezier(.22,.72,.21,1)!important;
+   pointer-events:auto!important;will-change:transform!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service.is-flipped .service-flip__inner{
+   transform:rotateY(180deg)!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service .service-flip__face{
+   position:absolute!important;inset:0!important;overflow:hidden!important;
+   backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important;
+   transform-style:flat!important;isolation:isolate!important;
+   pointer-events:none!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service .service-flip__front{
+   transform:rotateY(0deg)!important;z-index:2!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service .service-flip__back{
+   transform:rotateY(180deg)!important;z-index:1!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service.is-flipped .service-flip__front{
+   pointer-events:none!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service.is-flipped .service-flip__back{
+   pointer-events:auto!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service:not(.is-flipped) .service-flip__front{
+   pointer-events:auto!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service:not(.is-flipped) .service-flip__back{
+   pointer-events:none!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service .v8-service-art{
+   backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service .service-flip__back .v8-service-art,
+ body.v1021-services-mobile .services-flip-grid .v1021-service .service-flip__back .service-flip__art{
+   display:none!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service .v1021-service-button{
+   position:absolute!important;top:14px!important;right:14px!important;
+   left:auto!important;bottom:auto!important;z-index:40!important;
+   display:grid!important;place-items:center!important;
+   width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;
+   padding:0!important;margin:0!important;
+   border-radius:50%!important;border:1px solid rgba(236,244,231,.48)!important;
+   background:rgba(12,43,32,.90)!important;color:#f0f5e9!important;
+   box-shadow:0 6px 18px rgba(0,0,0,.16)!important;
+   opacity:1!important;visibility:visible!important;transform:none!important;
+   cursor:pointer!important;touch-action:manipulation!important;
+   -webkit-tap-highlight-color:transparent!important;
+   transition:background .2s ease,box-shadow .2s ease!important;
+   pointer-events:auto!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service .v1021-service-button svg{
+   width:21px!important;height:21px!important;display:block!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service .v1021-service-button:active{
+   background:rgba(43,91,66,.95)!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service .v1021-service-button:focus-visible{
+   outline:2px solid #e5f0d8!important;outline-offset:3px!important;
+ }
+ body.v1021-services-mobile .services-flip-grid .v1021-service .service-flip__back .service-flip__link{
+   position:relative;z-index:5;pointer-events:auto!important;
+ }
+}

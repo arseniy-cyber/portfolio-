@@ -1,0 +1,54 @@
+/* Lumo Sites V10.3 — clean atmosphere, true 3D screen, seamless sections. */
+body.lumo-v103{background:#0e241d}
+body.lumo-v103 .v8-statement-transition__track{display:none!important}
+body.lumo-v103 .v10-atmosphere::after{content:none!important;display:none!important;background-image:none!important}
+body.lumo-v103 .v10-atmosphere{left:0!important;right:0!important;width:100vw!important;max-width:none!important;isolation:isolate}
+body.lumo-v103 .v10-atmosphere canvas:not(.v102-cursor-smoke){filter:saturate(1.12) contrast(1.12)!important}
+body.lumo-v103 .v10-atmosphere .v102-cursor-smoke{display:block!important;z-index:11;filter:none!important;mix-blend-mode:screen;pointer-events:none}
+body.lumo-v103 .v10-atmosphere__veil{background:linear-gradient(180deg,rgba(8,24,19,.13),transparent 46%,rgba(8,25,19,.17))!important}
+body.lumo-v103:not(.home) .v10-atmosphere:not(.has-smoke-webgl)::before{filter:saturate(1.15) contrast(1.12)!important;opacity:.77!important}
+body.lumo-v103:not(.home) .v10-atmosphere.has-smoke-webgl::before{opacity:.07!important}
+/* No full-width coloured borders around the collection. A continuous backdrop
+   starts behind the gallery, instead of a second boxed panel inside .subpage. */
+body.lumo-v103 .subpage--works{background:linear-gradient(180deg,transparent 0%,transparent 26%,rgba(22,35,31,.84) 49%,#1c2425 100%)!important}
+body.lumo-v103 .subpage--works .works-grid{background:none!important;box-shadow:none!important;border:none!important;border-radius:0!important;padding-inline:0!important;margin-inline:0!important}
+body.lumo-v103 .subpage--works .works-grid__cell{border-top:0!important;padding-top:0!important;min-width:0}
+body.lumo-v103 .subpage--works .portfolio-tile{height:clamp(320px,26vw,405px)!important;max-width:100%;margin-inline:auto}
+body.lumo-v103 .subpage--works .portfolio-tile__rotator{transform-origin:50% 50%!important}
+body.lumo-v103 .subpage--works .portfolio-tile__face{box-sizing:border-box;max-width:100%;overflow:hidden}
+body.lumo-v103 .subpage--works .portfolio-tile__face--back{padding:clamp(18px,2.4vw,34px)!important;gap:16px}
+body.lumo-v103 .subpage--works .portfolio-tile__back-content strong{font-size:clamp(21px,2.25vw,36px)!important;line-height:1.08}
+body.lumo-v103 .subpage--works .portfolio-tile__description{font-size:clamp(14px,1.18vw,17px)!important;line-height:1.5}
+body.lumo-v103 .subpage--works .portfolio-tile__open{min-height:40px;padding:10px 16px;font-size:13px;white-space:nowrap}
+body.lumo-v103 .subpage--works .portfolio-tile__media img{object-fit:contain!important;transform:none!important}
+body.lumo-v103 .subpage--works .portfolio-tile:hover .portfolio-tile__media img{transform:none!important}
+/* Avoid the header/galleries jumping from one coloured rectangle to another. */
+body.lumo-v103 .subpage--services{background:linear-gradient(180deg,transparent 0%,rgba(14,33,28,.42) 55%,#192b26 100%)!important}
+body.lumo-v103 .subpage--process{background:linear-gradient(180deg,transparent 0%,rgba(18,33,31,.48) 60%,#1b2626 100%)!important}
+/* ABOUT: no extra frame around the hero and no dark rectangular panel edges. */
+body.lumo-v103[data-v10-theme=about]{background:linear-gradient(120deg,#10291e,#192823 51%,#251f28 100%)!important}
+body.lumo-v103 .subpage--about{background:linear-gradient(145deg,#10291e 0%,#182b24 48%,#251f28 100%)!important}
+body.lumo-v103 .subpage--about .v8-about-hero{background:transparent!important;border:0!important;outline:0!important;box-shadow:none!important}
+body.lumo-v103 .subpage--about .v8-about-hero::before,body.lumo-v103 .subpage--about .v8-about-hero::after{background:none!important;box-shadow:none!important}
+body.lumo-v103 .subpage--about .v8-about-hero .about-hero__visual{border:0!important;box-shadow:none!important}
+body.lumo-v103 .subpage--about .v8-about-body{background:linear-gradient(180deg,rgba(14,37,28,.16),rgba(34,32,39,.08))!important}
+body.lumo-v103 .subpage--about .v8-capabilities{background:transparent!important;border:none!important}
+body.lumo-v103 .subpage--about + .footer{border:0!important;background:linear-gradient(180deg,#1e2827,#1a2223)!important}
+/* Never let headlines, rotated tiles, or navigation collide with container edges. */
+body.lumo-v103 .subhero__title,body.lumo-v103 .chapter__title{overflow-wrap:normal!important;word-break:normal;hyphens:none}
+body.lumo-v103 .subpage--works .v8-works-hero{padding-inline:clamp(22px,6vw,90px)!important}
+body.lumo-v103 .subpage--works .v8-works-hero .subhero__title{max-width:1150px!important}
+@media(max-width:760px){
+ body.lumo-v103 .subpage--works .works-grid{gap:18px!important}
+ body.lumo-v103 .subpage--works .portfolio-tile{height:clamp(300px,94vw,470px)!important}
+ body.lumo-v103 .subpage--works .portfolio-tile__face--back{padding:clamp(18px,5vw,32px)!important}
+ body.lumo-v103 .subpage--about .v8-about-hero .about-hero__visual{border:0!important;border-radius:0!important}
+ body.lumo-v103 .subpage--works .v8-works-hero .subhero__title{font-size:clamp(38px,10.3vw,70px)!important}
+}
+@media(prefers-reduced-motion:reduce){body.lumo-v103 .v102-cursor-smoke{display:none!important}}
+/* Narrow-phone nav needs room for the brand and menu trigger. */
+@media(max-width:360px){
+ body.lumo-v103 .header__cta{display:none!important}
+ body.lumo-v103 .header{gap:10px;justify-content:space-between}
+}
+body.lumo-v103 .subpage--works .filter-bar{border-top:0!important;padding-top:0!important}

@@ -1,0 +1,107 @@
+/* Lumo Sites V10.22 — pricing page only. The rest of the site is unchanged. */
+body .price-page-v1022{
+  --price-ivory:#f7f4eb;--price-mint:#e0ebd7;--price-gold:#e2c28d;
+  position:relative;z-index:4;padding-top:120px;padding-bottom:94px;
+  max-width:1460px;color:var(--price-ivory);isolation:isolate;
+}
+.price-page-v1022::before{content:"";position:absolute;inset:0 -6vw;z-index:-2;pointer-events:none;
+ background:
+   radial-gradient(ellipse 52% 30% at 78% 12%,rgba(150,73,107,.26),transparent 82%),
+   radial-gradient(ellipse 56% 35% at 8% 58%,rgba(44,109,84,.26),transparent 80%),
+   radial-gradient(ellipse 35% 18% at 50% 22%,rgba(221,180,118,.11),transparent 82%);
+}
+.price-page-v1022::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:linear-gradient(180deg,rgba(255,244,220,.018),transparent 18%,transparent 82%,rgba(255,233,196,.018));
+}
+.price-hero{min-height:min(57vh,590px);display:flex;align-items:center;position:relative;padding:52px 0 80px;text-align:center;justify-content:center}
+.price-hero__glow{position:absolute;inset:2% 0 0;pointer-events:none;background:radial-gradient(ellipse 50% 36% at 50% 56%,rgba(228,196,146,.13),transparent 78%),radial-gradient(ellipse 40% 22% at 50% 68%,rgba(93,132,108,.08),transparent 82%);filter:blur(18px)}
+.price-hero__content{position:relative;z-index:1;max-width:1100px}
+.price-page-v1022 .price-hero h1{margin:0 auto;color:var(--price-ivory);font-size:clamp(64px,8.15vw,132px);letter-spacing:-.082em;line-height:.99;font-weight:750;text-wrap:balance}
+.price-page-v1022 .price-hero h1 em{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-weight:400;letter-spacing:-.065em;color:#d8e2cf}
+.price-page-v1022 .price-hero p{max-width:620px;margin:35px auto 0;color:#d4ddd0;font-size:clamp(16px,1.5vw,21px);line-height:1.58;text-wrap:pretty}
+.price-section{position:relative;z-index:1}
+.price-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
+.price-card{--metal:#e3d8be;position:relative;min-width:0;height:clamp(320px,29vw,372px);perspective:1500px;isolation:isolate;contain:layout style;}
+.price-card__rotator{position:relative;width:100%;height:100%;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .96s cubic-bezier(.23,.76,.17,1);will-change:transform}
+.price-card.is-flipped .price-card__rotator{transform:rotateY(180deg)}
+.price-card__face{position:absolute;inset:0;overflow:hidden;border-radius:24px;border:1px solid rgba(246,237,215,.22);backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-style:flat;isolation:isolate;box-shadow:inset 0 1px 0 rgba(255,251,229,.12),0 24px 70px rgba(0,0,0,.10)}
+.price-card__front{transform:rotateY(0deg);background:radial-gradient(ellipse 70% 120% at 88% 66%,rgba(196,171,123,.14),transparent 58%),radial-gradient(ellipse 74% 110% at 89% 65%,rgba(111,130,110,.42),transparent 68%),linear-gradient(137deg,#19372b 0%,#274437 50%,#4b3936 100%)}
+.price-card--wine .price-card__front{background:radial-gradient(ellipse 82% 100% at 78% 64%,rgba(196,139,165,.25),transparent 74%),radial-gradient(ellipse 58% 90% at 88% 62%,rgba(221,184,132,.11),transparent 72%),linear-gradient(136deg,#482633,#4b3040 50%,#1c4135)}
+.price-card--bronze .price-card__front{background:radial-gradient(ellipse 80% 110% at 75% 70%,rgba(205,166,103,.24),transparent 74%),linear-gradient(132deg,#2f3029,#574036 52%,#21443a)}
+.price-card--stone .price-card__front{background:radial-gradient(ellipse 74% 94% at 73% 74%,rgba(214,192,148,.24),transparent 73%),linear-gradient(125deg,#294031,#41493e 57%,#59453b)}
+.price-card--deep .price-card__front{background:radial-gradient(ellipse 85% 94% at 81% 71%,rgba(188,128,119,.23),transparent 76%),linear-gradient(138deg,#18352d,#294238 44%,#4b3338)}
+.price-card--violet .price-card__front{background:radial-gradient(ellipse 88% 100% at 84% 67%,rgba(158,138,174,.30),transparent 71%),radial-gradient(ellipse 50% 75% at 77% 59%,rgba(227,183,127,.10),transparent 75%),linear-gradient(135deg,#332a31,#54394d 54%,#274139)}
+.price-card__texture{pointer-events:none;position:absolute;inset:0;background:linear-gradient(110deg,rgba(255,255,255,.045),transparent 25%,rgba(255,255,255,.012) 48%,transparent 63%);z-index:1}
+.price-card__texture::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 52% 78% at 78% 49%,rgba(230,213,163,.11),transparent 73%);mix-blend-mode:screen}
+.price-card__front-content{position:absolute;z-index:4;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,2.4vw,34px);pointer-events:none}
+.price-card__front h2{margin:0;max-width:66%;color:#f6f2e7;font-size:clamp(27px,2.65vw,40px);line-height:1.05;letter-spacing:-.068em;font-weight:740;text-wrap:balance;hyphens:manual;overflow-wrap:normal}
+.price-card__price{margin:0;padding-right:62px;color:#f6e7c7;font-weight:690;font-size:clamp(18px,1.7vw,25px);letter-spacing:-.045em;line-height:1.23;text-wrap:balance;text-shadow:0 2px 11px rgba(0,0,0,.22)}
+.money-stage{position:absolute;width:70%;height:83%;top:9%;right:-1%;z-index:2;pointer-events:none;perspective:700px}
+.money-stage::before{content:"";position:absolute;left:8%;right:1%;top:11%;bottom:11%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(218,188,126,.10),rgba(108,132,96,.045) 40%,transparent 70%);filter:blur(18px);pointer-events:none}
+.money-stage__canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:2;pointer-events:none;filter:drop-shadow(0 18px 20px rgba(0,0,0,.27)) drop-shadow(0 0 10px rgba(239,206,134,.09))}
+.money-stage__aura{position:absolute;z-index:0;left:16%;top:66%;width:68%;height:19%;background:radial-gradient(ellipse at center,rgba(223,184,109,.14),rgba(88,110,83,.07) 48%,rgba(14,18,16,.16) 70%,transparent 88%);border-radius:50%;filter:blur(16px)}
+.price-card__flip{position:absolute;bottom:22px;right:24px;z-index:7;width:46px;height:46px;display:grid;place-items:center;cursor:pointer;border-radius:50%;background:rgba(225,229,205,.13);border:1px solid rgba(246,237,216,.46);color:#f5efe1;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 22px rgba(0,0,0,.08);touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:background .22s ease,border-color .22s ease,transform .22s ease}
+.price-card__flip svg{width:23px;height:23px;display:block;transition:transform .3s ease}
+.price-card__flip:hover{background:#eceadd;border-color:#eceadd;color:#183126;transform:translateY(-2px)}
+.price-card__flip:hover svg{transform:rotate(25deg)}
+.price-card__flip:focus-visible,.price-card__link:focus-visible{outline:2px solid #ebd3ac;outline-offset:4px}
+.price-card__back{transform:rotateY(180deg);background:linear-gradient(144deg,#243a32 3%,#24332f 40%,#463039 100%);padding:clamp(26px,3vw,42px)}
+.price-card--wine .price-card__back{background:linear-gradient(145deg,#422834,#352a33 58%,#213b32)}
+.price-card--bronze .price-card__back{background:linear-gradient(145deg,#45382e,#273b33 80%)}
+.price-card--stone .price-card__back{background:linear-gradient(145deg,#3a443d,#3b3030 95%)}
+.price-card--deep .price-card__back{background:linear-gradient(145deg,#18352c,#352b30)}
+.price-card--violet .price-card__back{background:linear-gradient(145deg,#352b3d,#28382e)}
+.price-card__back::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 85% 3%,rgba(214,186,146,.11),transparent 68%)}
+.price-card__back-content{height:100%;display:flex;flex-direction:column;align-items:flex-start;min-width:0;position:relative;z-index:1}
+.price-card__back h3{font-size:clamp(26px,2.55vw,37px);max-width:calc(100% - 50px);margin:0 0 20px;line-height:1.05;letter-spacing:-.055em;font-weight:720;color:#f5eee0;text-wrap:balance}
+.price-card__back p{font-size:clamp(14px,1.3vw,17px);line-height:1.5;max-width:490px;margin:0 0 13px;color:#e2e3d6;text-wrap:pretty}
+.price-card__back .price-card__more{font-size:clamp(13px,1.14vw,15px);color:#c4d1c1}
+.price-card__back-bottom{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:15px;width:100%;padding-top:17px}
+.price-card__back-bottom strong{font-size:clamp(15px,1.4vw,19px);line-height:1.15;color:#e5d7b7;font-weight:600;max-width:48%}
+.price-card__link{color:#20372c;background:#eeeee1;border:1px solid #f2eee3;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:45px;min-width:152px;padding:10px 14px;text-align:center;border-radius:28px;font-size:13px;font-weight:700;line-height:1.1;white-space:nowrap;transition:background .25s ease,transform .2s ease,box-shadow .25s ease}
+.price-card__link svg{width:17px;height:17px;flex-shrink:0}
+.price-card__link:hover{background:#d5e5d0;transform:translateY(-2px);box-shadow:0 9px 23px rgba(0,0,0,.14)}
+.price-card__back .price-card__flip{top:23px;right:23px;bottom:auto}
+.price-card.is-flipped .price-card__front{pointer-events:none}
+.price-card:not(.is-flipped) .price-card__back{pointer-events:none}
+.price-card__flip--front{visibility:visible}
+.price-card.is-flipped .price-card__flip--front{visibility:hidden}
+.price-card:not(.is-flipped) .price-card__flip--back{visibility:hidden}
+.price-card--wide{grid-column:1 / -1;height:328px}
+.price-card--wide .price-card__front h2{max-width:49%;font-size:clamp(30px,3.2vw,45px)}
+.price-card--wide .money-stage{width:50%;right:4%;height:96%;top:2%}
+.price-card--wide .price-card__back-content p{max-width:660px}
+.price-card--wide .price-card__back-bottom{justify-content:flex-start;gap:34px}
+.price-afterword{display:flex;align-items:flex-start;gap:24px;margin:44px 0 0;padding:28px 0 0;border-top:1px solid rgba(232,238,210,.22)}
+.price-afterword__dash{width:55px;height:2px;background:linear-gradient(90deg,#d4c1a4,transparent);flex-shrink:0;margin-top:13px}
+.price-afterword p{margin:0;color:#c7d4c5;font-size:clamp(16px,1.47vw,20px);line-height:1.55;max-width:790px}
+.price-attribution{margin:30px 0 0;color:#9bada0;font-size:11px;line-height:1.5}
+.price-attribution a{text-decoration:underline;text-underline-offset:3px;color:inherit}
+@media (min-width:1000px){.price-grid{gap:26px}.price-card:nth-child(2n) .money-stage{right:-1%;transform:scale(.93)}}
+@media (max-width:960px){.price-page-v1022 .price-hero{min-height:400px}.price-grid{gap:16px}.price-card{height:350px}.price-card__front h2{font-size:clamp(25px,3.2vw,32px)}.price-card__back p{font-size:14px}.price-card__back h3{font-size:27px}.price-card__back-bottom{align-items:flex-start;flex-direction:column;gap:10px}.price-card__back-bottom strong{max-width:100%}.price-card--wide{height:332px}.price-card--wide .price-card__back-bottom{flex-direction:row;align-items:flex-end}}
+@media (max-width:780px){body .price-page-v1022{padding-top:106px;padding-bottom:66px;padding-left:clamp(18px,5.1vw,32px);padding-right:clamp(18px,5.1vw,32px)}.price-hero{min-height:370px;padding:23px 0 46px}.price-page-v1022 .price-hero h1{font-size:clamp(56px,10.4vw,80px)}.price-page-v1022 .price-hero p{margin-top:25px;font-size:17px;max-width:450px}.price-grid{grid-template-columns:minmax(0,1fr);gap:17px}.price-card,.price-card--wide{height:358px;grid-column:auto}.price-card__face{border-radius:22px}.price-card__front h2,.price-card--wide .price-card__front h2{max-width:84%;font-size:clamp(31px,6.8vw,38px)}.price-card__front-content{padding:24px}.price-card__price{font-size:23px}.money-stage,.price-card--wide .money-stage{top:13%;right:-2%;width:95%;height:76%}.price-card__flip{right:18px;bottom:18px;width:44px;height:44px}.price-card__back{padding:27px 22px}.price-card__back h3{font-size:29px;margin-bottom:20px}.price-card__back p{font-size:15px}.price-card__back-bottom{flex-direction:row;align-items:center;gap:14px}.price-card__back-bottom strong{font-size:16px;max-width:46%}.price-card__link{min-width:139px;padding:10px 12px;font-size:12px}.price-card--wide .price-card__back-bottom{gap:13px}.price-afterword{gap:15px;margin-top:36px}.price-afterword__dash{width:29px}.price-afterword p{font-size:16px}}
+@media (max-width:390px){.price-card,.price-card--wide{height:378px}.price-card__front h2,.price-card--wide .price-card__front h2{font-size:30px}.price-card__front-content{padding:21px}.price-card__back{padding:22px 18px}.price-card__back h3{font-size:26px;margin-bottom:15px}.price-card__back p{font-size:14px;line-height:1.48}.price-card__back .price-card__more{font-size:13px}.price-card__back-bottom{align-items:flex-start;flex-direction:column;gap:10px}.price-card__link{min-height:40px}.price-card__back .price-card__flip{top:16px;right:16px}.price-card__flip{right:16px;bottom:16px}}
+@media (prefers-reduced-motion:reduce){.price-card__rotator{transition-duration:.01ms!important}.price-card__flip,.price-card__flip svg,.price-card__link{transition-duration:.01ms!important}}
+/* Reliable fallback while the locally stored GLB loads or WebGL is unavailable. */
+.price-page-v1022::before{inset:0;}
+.money-stage::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background-image:url('../img/money-fallback.webp');background-size:contain;background-repeat:no-repeat;background-position:center;
+  filter:drop-shadow(0 13px 14px rgba(0,0,0,.28)) drop-shadow(0 0 18px rgba(236,206,137,.17));transition:opacity .28s ease;
+  animation:money-fallback-float 8s ease-in-out infinite;
+}
+.money-stage--ready::after{opacity:0;animation:none}
+@keyframes money-fallback-float{0%,100%{transform:translate3d(0,2px,0) rotate(-1deg)}50%{transform:translate3d(0,-6px,0) rotate(1deg)}}
+@media(prefers-reduced-motion:reduce){.money-stage::after{animation:none}}
+
+/* V10.24 — precise arrow geometry for service cards; no emoji/rotating glyphs. */
+.price-page-v1022 .price-card__flip svg{width:20px;height:20px;transform:none!important;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.price-page-v1022 .price-card__flip:hover svg{transform:none!important}
+.price-page-v1022 .price-card__link svg{width:17px;height:17px;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+/* Only mobile model placement changes; all desktop cards and typography are retained. */
+@media (max-width:780px){
+ .price-page-v1022 .money-stage,.price-page-v1022 .price-card--wide .money-stage{
+   top:18%;left:12%;right:auto;width:76%;height:68%;transform:none;
+ }
+ .price-page-v1022 .money-stage::before{inset:9% 5% 7%;}
+ .price-page-v1022 .money-stage__aura{left:19%;width:62%;top:72%;height:15%;}
+}

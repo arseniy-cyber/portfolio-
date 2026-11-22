@@ -1,0 +1,179 @@
+/* LUMO SITES V10.17 · consistency layer over the approved V10.16 design. */
+:root{--v1017-ease:cubic-bezier(.2,.78,.2,1);--v1017-cream:#edf0e5;--v1017-forest:#0a2119}
+/* Prepared state: use a real ready gate and a fail-safe instead of fictitious percent. */
+.v1017-loader{position:fixed;inset:0;display:grid;place-content:center;justify-items:center;gap:30px;z-index:99999;background:radial-gradient(ellipse 60% 60% at 68% 43%,#1b3c2c,#071711 67%,#06120f);color:#f5f4e9;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .55s ease,visibility .55s ease}
+html.v1017-awaiting .v1017-loader{opacity:1;visibility:visible;pointer-events:auto}
+.v1017-loader__mark{font-size:clamp(56px,9vw,116px);letter-spacing:-.11em;font-weight:850;line-height:.88;text-align:center}
+.v1017-loader__mark>span{color:#c0dcae}
+.v1017-loader__mark small{display:block;font-size:clamp(15px,2.9vw,27px);font-weight:500;letter-spacing:.36em;margin-top:17px}
+.v1017-loader__track{width:min(230px,66vw);height:1px;background:rgba(238,243,222,.23);position:relative;overflow:hidden}
+.v1017-loader__track i{position:absolute;top:0;bottom:0;width:40%;background:linear-gradient(90deg,transparent,#d5edd1,transparent);animation:v1017-loader-move 1.4s ease-in-out infinite alternate}
+.v1017-loader p{font-size:12px;color:#b4cbbc;letter-spacing:.045em;min-height:19px}
+@keyframes v1017-loader-move{from{transform:translateX(-100%)}to{transform:translateX(350%)}}
+html.v1017-awaiting body{overflow:hidden}
+/* Guarantee the home page has no ivory/white fallback when the active chapter changes. */
+body.lumo-v1017.home{background:#091c16!important}
+/* Preserve the original V10.16 moving green-water video behind the film. */
+body.lumo-v1017.home .film{background:transparent!important}
+body.lumo-v1017.home .film-stage,body.lumo-v1017.home[data-skin="ivory"] .film-stage,body.lumo-v1017.home[data-skin="emerald"] .film-stage{background-color:#0a2019!important}
+/* Video overlay gradient: inherited unchanged from V10.16. */
+body.lumo-v1017.home .chapter--studio,body.lumo-v1017.home .chapter--device{background-color:transparent!important;background-image:none!important}
+body.lumo-v1017.home .chapter--studio::after,body.lumo-v1017.home .chapter--device::after{background:transparent!important;box-shadow:none!important}
+body.lumo-v1017.home .film-stage__video{background:#0a2019}
+
+/* Editorial first frame: real animation rather than a link-like extra CTA. */
+body.lumo-v1017.home .v1017-hero-editorial{position:absolute;left:clamp(22px,8vw,128px);bottom:clamp(42px,6svh,72px);width:min(530px,55vw);min-height:62px;z-index:5;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:0;color:#e6ebe0}
+.v1017-editorial-kicker{font-size:clamp(11px,1vw,13px);font-weight:650;letter-spacing:.055em;line-height:1.4;white-space:nowrap;color:#c2d5bd;border-right:1px solid rgba(217,231,202,.4);padding-right:17px}
+.v1017-editorial-lines{position:relative;display:block;height:30px;min-width:0;overflow:hidden}
+.v1017-editorial-line{display:block;position:absolute;left:0;top:0;width:100%;font-size:clamp(12px,1.1vw,15px);line-height:1.45;opacity:0;filter:blur(3px);transform:translateY(11px);transition:transform .75s var(--v1017-ease),opacity .65s ease,filter .7s ease}
+.v1017-editorial-line.is-current{opacity:1;filter:none;transform:translateY(0)}
+body.lumo-v1017.home .hero-scroll__title{backface-visibility:hidden;-webkit-font-smoothing:antialiased}
+body.lumo-v1017.home .hero-scroll__sites,body.lumo-v1017.home .v8-hero-char{will-change:transform,opacity;backface-visibility:hidden;filter:none!important}
+
+/* MacBook: content fits the model canvas in any rotated position; no clipped edges. */
+body.lumo-v1017.home .v8-macbook .gltf-scene--macbook{overflow:visible!important;clip-path:none!important;filter:drop-shadow(0 30px 40px rgba(0,0,0,.22))!important}
+body.lumo-v1017.home .v8-macbook .gltf-scene--macbook .gltf-scene__canvas{display:block!important;transform:none!important;filter:none!important;touch-action:pan-y!important;backface-visibility:hidden;cursor:grab}
+body.lumo-v1017.home .v8-macbook .gltf-scene--macbook .gltf-scene__canvas.is-dragging{cursor:grabbing}
+body.lumo-v1017.home .v8-macbook .v1016-device-hint{color:#d3e2d4!important;font-size:clamp(12px,1vw,14px)!important;letter-spacing:.02em;opacity:.85!important;text-align:center;pointer-events:none}
+body.lumo-v1017.home .v8-macbook{isolation:auto!important}
+
+/* Foldable phone: aligned hint and an uninterrupted dark canvas before the phone appears. */
+body.lumo-v1017.home .v8-device,body.lumo-v1017.home .v8-device>.chapter__inner--right{background:transparent!important}
+body.lumo-v1017.home .v8-device .gltf-scene--phone{background:transparent!important}
+body.lumo-v1017.home .phone-drag-hint{left:0!important;right:0!important;bottom:clamp(10px,3svh,27px)!important;text-align:center!important;margin:auto!important;max-width:min(90%,480px)!important;white-space:normal!important;overflow-wrap:normal!important}
+
+/* Cards: an intentional reverse side with readable real descriptions. */
+body.lumo-v1017 .selected__reveal{justify-content:center!important;gap:clamp(10px,1.5vw,18px)!important;overflow:hidden!important;backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important}
+body.lumo-v1017 .selected__reveal h3{font-size:clamp(25px,2.3vw,37px)!important;line-height:1.08!important;letter-spacing:-.055em!important}
+body.lumo-v1017 .selected__reveal p{font-size:clamp(12px,1.07vw,15px)!important;line-height:1.48!important;max-width:405px!important;margin:0!important;overflow-wrap:normal!important;hyphens:none!important}
+body.lumo-v1017 .selected__reveal-action{position:relative!important;isolation:isolate;display:inline-flex!important;align-items:center;justify-content:space-between;gap:14px;align-self:flex-start;width:max-content;max-width:100%;min-height:44px;padding:11px 20px!important;border-radius:999px;background:#e9eee0!important;color:#183528!important;overflow:hidden;transition:color .38s ease,box-shadow .38s ease,border-color .38s ease!important;box-shadow:inset 0 0 0 1px rgba(22,55,40,.13)!important;transform:none!important;text-decoration:none!important}
+body.lumo-v1017 .selected__reveal-action::before{content:'';position:absolute;z-index:-1;inset:0;background:#9ab99a;transform:scaleX(0);transform-origin:left center;transition:transform .46s var(--v1017-ease)}
+body.lumo-v1017 .selected__reveal-action:hover::before,body.lumo-v1017 .selected__reveal-action:focus-visible::before{transform:scaleX(1)}
+body.lumo-v1017 .selected__reveal-action:hover,body.lumo-v1017 .selected__reveal-action:focus-visible{box-shadow:inset 0 0 0 1px #95b693!important;color:#0a2117!important}
+body.lumo-v1017 .selected__reveal-action .v1015-arrow{width:17px;height:17px;flex:0 0 auto}
+body.lumo-v1017 .selected__flip,body.lumo-v1017 .selected__flip-inner{transform-style:preserve-3d!important}
+body.lumo-v1017 .selected__shot,body.lumo-v1017 .selected__reveal{backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important}
+body.lumo-v1017 .portfolio-tile__description{max-width:43ch;font-size:clamp(13px,1.09vw,16px)!important;line-height:1.52!important;overflow-wrap:break-word!important}
+body.lumo-v1017 .portfolio-tile__face--back{backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important;overflow:hidden!important;padding:clamp(15px,2vw,30px)!important}
+body.lumo-v1017 .portfolio-tile__back-content{max-width:100%!important;display:grid;gap:12px}
+body.lumo-v1017 .portfolio-tile__open{border-radius:999px!important;overflow:hidden;isolation:isolate;position:relative;max-width:max-content;transition:color .3s ease,background .3s ease!important}
+body.lumo-v1017 .portfolio-tile__open::before{content:'';position:absolute;inset:0;z-index:-1;background:#bad3b7;transform:scaleX(0);transform-origin:left center;transition:transform .44s var(--v1017-ease)}
+body.lumo-v1017 .portfolio-tile__open:hover::before{transform:scaleX(1)}
+
+/* Book: tailored leather/metal visual, six existing paper sheets retained. */
+body.lumo-v1017 .v1016-book{transform-style:preserve-3d;perspective:1900px;overflow:visible}
+body.lumo-v1017 .v1016-book .v1016-book-cover{display:flex!important;background:radial-gradient(ellipse 70% 35% at 73% 17%,rgba(200,158,109,.20),transparent 60%),repeating-linear-gradient(98deg,transparent 0 5px,rgba(9,6,6,.018) 6px 7px),linear-gradient(114deg,#231b18 0%,#4a3028 6%,#53372d 47%,#281d1c 100%)!important;border:1px solid rgba(208,170,124,.51)!important;border-radius:8px 22px 22px 7px!important;box-shadow:inset 14px 0 18px rgba(7,4,4,.46),inset -5px 0 13px rgba(226,189,128,.18),0 24px 55px rgba(0,0,0,.2)!important;transform-origin:left center!important;transition:transform .85s var(--v1017-ease),opacity .45s ease!important;backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important;pointer-events:auto}
+body.lumo-v1017 .v1016-book.is-closed .v1016-book-cover,body.lumo-v1017 .v1016-book.is-closing .v1016-book-cover{transform:rotateY(0)!important;opacity:1!important;pointer-events:auto!important}
+body.lumo-v1017 .v1016-book.is-opening .v1016-book-cover,body.lumo-v1017 .v1016-book.is-open .v1016-book-cover{transform:rotateY(-165deg)!important;opacity:0!important;pointer-events:none!important}
+body.lumo-v1017 .v1016-book.is-closing .storybook__controls{pointer-events:none!important}
+body.lumo-v1017 .v1016-book.is-closing .storybook__page{pointer-events:none!important}
+body.lumo-v1017 .v1016-book-cover strong{font-family:Georgia,'Times New Roman',serif;font-weight:400!important;text-shadow:0 2px 14px rgba(4,2,1,.23)!important;letter-spacing:-.052em}
+body.lumo-v1017 .v1016-book-cover__eyebrow{color:#bda98d!important}
+body.lumo-v1017 .v1016-book-cover__subtitle{color:#d9c5ab!important}
+body.lumo-v1017 .v1017-cover-mark{position:relative;display:grid;place-items:center;width:clamp(70px,9vw,96px);height:clamp(70px,9vw,96px);border:1px solid rgba(235,206,157,.68);border-radius:50%;color:#ecd2a8;font-size:17px;font-weight:550;letter-spacing:-.06em;background:radial-gradient(circle at 35% 28%,rgba(252,223,171,.15),transparent 60%);box-shadow:0 0 0 7px rgba(222,191,135,.065),inset 0 0 0 3px rgba(25,15,11,.33);margin-bottom:8px}
+body.lumo-v1017 .v1016-book .v1016-cover-emboss{inset:19px!important;border-color:rgba(224,196,153,.2)!important;pointer-events:none}
+body.lumo-v1017 .v1016-cover-open{border:1px solid rgba(232,211,174,.5)!important;background:rgba(10,11,10,.22)!important;border-radius:999px!important;padding:12px 16px 12px 20px!important;min-height:45px;color:#f2e6d4;gap:18px;transition:background .25s ease,transform .25s ease}
+body.lumo-v1017 .v1016-cover-open svg{width:19px;height:19px;transition:transform .3s ease}
+body.lumo-v1017 .v1016-cover-open:hover{background:rgba(248,222,179,.14)!important;transform:translateY(-2px)}
+body.lumo-v1017 .v1016-cover-open:hover svg{transform:translateX(3px)}
+body.lumo-v1017 .v1016-cover-close{display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(42,65,47,.18)!important;border-radius:30px!important;background:rgba(16,52,35,.07)!important;color:#234431!important;font-size:clamp(11px,1vw,13px)!important;font-weight:600!important;opacity:1!important;padding:8px 11px!important;max-width:142px;text-decoration:none!important;transition:background .2s ease}
+body.lumo-v1017 .v1016-cover-close:hover{background:rgba(16,52,35,.16)!important}
+body.lumo-v1017 .v1016-book .storybook__controls{gap:clamp(8px,1.3vw,14px);display:flex;align-items:center;justify-content:space-between}
+body.lumo-v1017 .v1016-book .storybook__controls [data-story-status]{flex:1;min-width:0;text-align:center;font-size:12px}
+body.lumo-v1017 .v1016-book .storybook__controls .v8-story-nav{flex-shrink:0}
+body.lumo-v1017 .v1016-book .storybook__page p{font-size:clamp(14px,1.04vw,17px)!important;line-height:1.55!important}
+body.lumo-v1017 .v1016-book .storybook__page .v1017-book-detail{font-size:clamp(12px,.92vw,15px)!important;color:#5f6758!important;line-height:1.5!important;margin-top:15px!important}
+
+/* Editorial treatment for every individual work page: meaningful breaks, no hyphen soup. */
+body.lumo-v1017 .case-hero__copy h1{font-size:clamp(44px,4.2vw,79px)!important;line-height:1.04!important;overflow-wrap:normal!important;word-break:normal!important;hyphens:none!important;letter-spacing:-.055em!important;max-width:11.5ch;text-wrap:balance}
+body.lumo-v1017 .case-story{gap:clamp(50px,7vw,120px)!important;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)!important}
+body.lumo-v1017 .case-story .v1017-case-statement{font-size:clamp(31px,3.35vw,54px)!important;line-height:1.13!important;letter-spacing:-.055em!important;max-width:21ch!important;hyphens:none!important;overflow-wrap:normal!important;word-break:normal!important;text-wrap:pretty}
+body.lumo-v1017 .v1017-case-intro{font-size:clamp(15px,1.17vw,18px)!important;color:#b8c9ba!important;line-height:1.68!important;max-width:54ch!important;margin-top:clamp(22px,4vw,47px)!important}
+body.lumo-v1017 .v1017-case-teaser{max-width:35ch!important}
+body.lumo-v1017 .case-story__solution{padding-left:clamp(18px,3.4vw,48px);border-left:1px solid rgba(220,235,217,.21);align-self:center}
+body.lumo-v1017 .case-story__solution p{font-size:clamp(15px,1.36vw,20px)!important;line-height:1.62!important}
+body.lumo-v1017 .case[data-v1017-project='iphone'] .case-hero{--case-bg:#142c29}
+body.lumo-v1017 .case[data-v1017-project='lav-parfum'] .case-hero{--case-bg:#3b2533}
+body.lumo-v1017 .case[data-v1017-project='niks'] .case-hero{--case-bg:#261b29}
+body.lumo-v1017 .case[data-v1017-project='sad-kofe'] .case-hero{--case-bg:#514033}
+body.lumo-v1017 .case[data-v1017-project='shurubor'] .case-hero{--case-bg:#353526}
+
+/* Laboratory: preserve all six controls, shrink container itself to virtual device. */
+body.lumo-v1017.lab-parent .lab-viewer__stage{position:relative!important;display:block!important;width:100%;max-width:100%!important;margin:6px auto 0!important;background:transparent!important;overflow:hidden!important;box-shadow:0 14px 55px rgba(11,32,23,.12)!important;transition:width .28s ease,height .28s ease!important}
+body.lumo-v1017.lab-parent .lab-viewer__stage iframe{position:absolute!important;top:0!important;left:0!important;right:auto!important;bottom:auto!important;min-height:0!important;border:0!important;max-width:none!important;transform-origin:top left!important;background:#e7e8e1!important}
+body.lumo-v1017.lab-parent .lab-viewer{background:#d7ddd5!important}
+body.lumo-v1017.lab-parent .lab-viewer__hint{padding-top:8px!important}
+
+/* Mobile: book/buttons/project content adapt before any decorative effect. */
+@media(max-width:780px){
+ body.lumo-v1017.home .v1017-hero-editorial{position:relative!important;left:auto!important;bottom:auto!important;width:100%!important;max-width:360px!important;margin:clamp(30px,5svh,47px) 0 0!important;grid-template-columns:1fr;gap:10px;min-height:82px}
+ .v1017-editorial-kicker{font-size:11px!important;border-right:0;padding-right:0;color:#b5c9b3}
+ .v1017-editorial-lines{height:28px}
+ .v1017-editorial-line{font-size:clamp(12px,3.3vw,14px)!important}
+ body.lumo-v1017.home .hero__lower{margin-top:clamp(43px,7svh,88px)!important}
+ body.lumo-v1017.home .v8-macbook .gltf-scene--macbook{width:min(100%,650px)!important;max-width:100%!important;min-height:210px!important;height:min(46svh,450px)!important;overflow:visible!important;margin:8px auto 0!important}
+ body.lumo-v1017.home .v8-macbook .v1016-device-hint{margin:3px auto 18px!important;padding:2px 12px!important;display:block;text-align:center}
+ body.lumo-v1017.home .v8-device{height:230svh!important;min-height:230svh!important}
+ body.lumo-v1017.home .v8-device .phone-drag-hint{max-width:94%!important;bottom:3px!important;left:0!important;right:0!important;font-size:clamp(11px,2.9vw,13px)!important;line-height:1.45!important;white-space:normal!important;padding:0 16px!important;text-align:center!important}
+ /* The project cards have real opposite faces. No system unicode icon. */
+ body.lumo-v1017 .v1016-flippable .selected__flip-inner,body.lumo-v1017 .v1016-flippable .portfolio-tile__rotator{transition:transform .6s var(--v1017-ease)!important;transform-style:preserve-3d!important}
+ body.lumo-v1017 .v1016-flippable .selected__reveal{padding:18px!important;gap:7px!important;justify-content:space-evenly!important}
+ body.lumo-v1017 .v1016-flippable .selected__reveal h3{font-size:clamp(21px,5.5vw,29px)!important;line-height:1.1!important;margin:0!important;max-width:calc(100% - 40px)}
+ body.lumo-v1017 .v1016-flippable .selected__reveal p{font-size:clamp(11px,2.7vw,13px)!important;line-height:1.4!important;max-width:100%!important;overflow:hidden!important;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical}
+ body.lumo-v1017 .v1016-flippable .selected__reveal-action{font-size:12px!important;min-height:38px!important;padding:8px 14px!important;margin:0!important}
+ body.lumo-v1017 .v1016-flippable .portfolio-tile__face--back{padding:18px!important;justify-content:space-between!important;gap:9px!important}
+ body.lumo-v1017 .v1016-flippable .portfolio-tile__description{font-size:clamp(12px,3vw,14px)!important;line-height:1.43!important;max-height:7.2em;overflow:hidden}
+ body.lumo-v1017 .v1016-flippable .portfolio-tile__back-content{gap:9px!important;max-width:calc(100% - 6px)}
+ /* Same elegant small turn button on both physical card faces. */
+ body.lumo-v1017 .v1016-flippable .v1016-flip,body.lumo-v1017 .v1016-service .v1017-service-turn{position:absolute!important;top:13px!important;right:13px!important;left:auto!important;bottom:auto!important;display:grid!important;place-items:center!important;z-index:20!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;padding:0!important;margin:0!important;border-radius:12px!important;background:rgba(13,36,28,.93)!important;border:1px solid rgba(230,238,221,.37)!important;color:#edf3e6!important;box-shadow:0 10px 23px rgba(0,0,0,.13)!important;opacity:1!important;visibility:visible!important;transform:none!important;transition:background .18s ease,box-shadow .18s ease!important;cursor:pointer!important;touch-action:manipulation!important}
+ body.lumo-v1017 .v1016-flippable .v1016-flip:hover,body.lumo-v1017 .v1016-service .v1017-service-turn:hover{background:#234e38!important}
+ body.lumo-v1017 .v1016-flippable .v1016-flip svg,body.lumo-v1017 .v1016-service .v1017-service-turn svg{width:19px!important;height:19px!important}
+ body.lumo-v1017 .v1016-service .service-flip__inner{transition:transform .54s var(--v1017-ease)!important;transform-style:preserve-3d!important;will-change:transform}
+ body.lumo-v1017 .v1016-service .service-flip__face{backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important}
+ body.lumo-v1017 .v1016-service .service-flip__front .service-flip__toggle::before{content:''!important;width:18px!important;height:18px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23edf3e6' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h10v10M17 7 7 17'/%3E%3C/svg%3E")!important;background-position:center!important;background-size:contain!important;background-repeat:no-repeat!important}
+ body.lumo-v1017 .v1016-service .service-flip__back .v1017-service-turn--back{display:grid!important}
+ body.lumo-v1017 .v1016-service .service-flip__back .v8-service-art{display:none!important}
+ body.lumo-v1017 .v1016-service .service-flip__link{max-width:100%!important}
+ body.lumo-v1017 .v1016-book .storybook__page p{font-size:clamp(12px,3.6vw,15px)!important;line-height:1.46!important}
+ body.lumo-v1017 .v1016-book .storybook__page .v1017-book-detail{font-size:clamp(11px,3vw,13px)!important;margin-top:9px!important;line-height:1.45!important}
+ body.lumo-v1017 .v1016-book .storybook__controls{gap:6px!important;flex-wrap:nowrap!important}
+ body.lumo-v1017 .v1016-cover-close{padding:7px 8px!important;font-size:11px!important}
+ body.lumo-v1017 .v1016-book-cover{padding:28px!important}
+ body.lumo-v1017 .v1016-book-cover strong{font-size:clamp(34px,8vw,48px)!important}
+ body.lumo-v1017 .v1017-cover-mark{width:67px;height:67px;font-size:14px}
+ body.lumo-v1017 .case-hero__copy h1{font-size:clamp(39px,9.5vw,61px)!important;max-width:100%;overflow-wrap:break-word!important;hyphens:none!important}
+ body.lumo-v1017 .case-story{display:block!important;padding:clamp(52px,8svh,88px) 23px!important}
+ body.lumo-v1017 .case-story .v1017-case-statement{font-size:clamp(28px,7.4vw,41px)!important;max-width:100%!important;overflow-wrap:normal!important;word-break:normal!important;hyphens:none!important;line-height:1.19!important}
+ body.lumo-v1017 .v1017-case-intro{font-size:14px!important;line-height:1.58!important;margin-top:24px!important}
+ body.lumo-v1017 .case-story__solution{border-left:0!important;border-top:1px solid rgba(220,235,217,.22)!important;padding:26px 0 0!important;margin-top:35px!important}
+ body.lumo-v1017.lab-parent .lab-workspace{display:flex!important;flex-direction:column!important;align-items:stretch!important}
+ body.lumo-v1017.lab-parent .lab-controls{width:min(100%,540px)!important;max-width:100%;margin:0 auto 18px!important;align-self:center!important;box-sizing:border-box!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body.lumo-v1017.lab-parent .lab-viewer{min-width:0!important}
+ /* Phone 'One author' is a magazine cover, not an isolated photo + separate text. */
+ body.lumo-v1017.home .chapter--about .about-screen{display:flex!important;position:relative!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-end!important;width:100%!important;max-width:100%!important;min-height:clamp(510px,78svh,770px)!important;height:auto!important;padding:clamp(28px,8vw,58px)!important;margin:0!important;border-radius:20px!important;overflow:hidden!important;background:#092219 url('../img/about-v8-architecture.webp') center center/cover no-repeat!important;isolation:isolate}
+ body.lumo-v1017.home .chapter--about .about-screen::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(5,19,15,.08) 9%,rgba(5,17,12,.28) 46%,rgba(5,18,13,.95) 100%)}
+ body.lumo-v1017.home .chapter--about .about-screen__image{display:none!important}
+ body.lumo-v1017.home .chapter--about .about-screen__copy{z-index:1;position:relative;display:block;width:100%!important;max-width:100%!important;margin:0!important;padding:0!important;background:none!important}
+ body.lumo-v1017.home .chapter--about .about-screen__copy .chapter__title{font-size:clamp(41px,11vw,58px)!important;line-height:1.02!important;color:#f3f4e8!important;max-width:100%!important}
+ body.lumo-v1017.home .chapter--about .about-screen__copy .chapter__title em{color:#d2e5c7!important}
+ body.lumo-v1017.home .chapter--about .about-screen__copy p{color:#e5e8dd!important;font-size:clamp(14px,3.8vw,17px)!important;line-height:1.55!important;max-width:35ch!important}
+ body.lumo-v1017.home .chapter--about .about-screen__copy a{color:#f2f3e9!important}
+}
+@media(max-width:410px){
+ body.lumo-v1017 .v1016-book .storybook__controls .v8-story-nav{width:37px!important;height:37px!important;min-width:37px!important}
+ body.lumo-v1017 .v1016-book .storybook__controls [data-story-status]{font-size:11px}
+ body.lumo-v1017.lab-parent .lab-controls{grid-template-columns:1fr!important}
+}
+@media(prefers-reduced-motion:reduce){.v1017-loader__track i{animation:none}.v1017-editorial-line{transition:none!important}.v1016-book .v1016-book-cover{transition:none!important}}
+
+/* Compact, non-overlapping navigation on the genuine book pages. */
+body.lumo-v1017 .v1016-book .storybook__controls>.v1016-cover-close{flex:0 0 auto!important;min-width:72px!important;max-width:98px!important;white-space:nowrap!important}
+body.lumo-v1017 .v1016-book .storybook__controls>.v8-story-nav{flex:0 0 auto!important}
+body.lumo-v1017 .v1016-book .storybook__controls>[data-story-status]{min-width:40px!important;margin:0!important;white-space:nowrap!important}
+@media(max-width:410px){body.lumo-v1017 .v1016-book .storybook__controls{left:14px!important;right:14px!important;bottom:19px!important;gap:7px!important}}
+/* Consistent outlined arrows on macOS/iOS/Android; no emoji font substitution. */
+.v1017-arrow{display:inline-flex;vertical-align:middle;align-items:center;justify-content:center;line-height:0;flex:none}
+.v1017-arrow svg{width:1em;height:1em;overflow:visible;display:block;stroke:currentColor;fill:none}
+
+/* Keep the original water moving even when the scroll scene switches to the ivory skin. */
+body.lumo-v1017.home[data-skin="ivory"] .film-stage__video{opacity:.29!important}

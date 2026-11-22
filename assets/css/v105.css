@@ -1,0 +1,42 @@
+/* Lumo V10.5: fix what was visible in Opera GX, without overriding the original V8 layout unnecessarily. */
+/* Restore the original V8 menu, rejecting experimental V10.1–V10.4 panel skins. */
+body.lumo-v105 .menu-panel{background:#dfe6d9!important;color:#0b2619!important;border:1px solid rgba(207,224,206,.65)!important;border-radius:17px!important;box-shadow:0 28px 90px rgba(0,0,0,.4)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:34px 36px!important;top:96px!important;right:clamp(18px,4.5vw,78px)!important;max-height:calc(100dvh - 113px)!important}
+body.lumo-v105 .menu-panel nav a{color:#0b2619!important;font-size:clamp(22px,2.7vw,36px)!important;font-weight:700!important;letter-spacing:-.06em!important;padding:11px 0!important;border-bottom:1px solid rgba(20,45,28,.14)!important;transform:none}
+body.lumo-v105 .menu-panel nav a:hover{color:#7e394c!important;transform:translateX(7px)}
+body.lumo-v105 .menu-trigger{border-radius:50%!important;width:47px!important;height:47px!important;background:radial-gradient(circle at 30% 20%,rgba(156,189,163,.16),transparent 70%),rgba(13,31,22,.8)!important}
+/* Hero titles: optical centre and vertical correction; preserve mobile safety. */
+body.lumo-v105 .subpage--works .v8-works-hero,body.lumo-v105 .subpage--services>.subhero,body.lumo-v105 .subpage--process>.subhero{justify-content:center!important;align-items:center!important;text-align:center!important;min-height:76svh!important;padding-top:90px!important;padding-bottom:40px!important}
+body.lumo-v105 .subpage--works .subhero__title,body.lumo-v105 .subpage--services>.subhero .subhero__title,body.lumo-v105 .subpage--process>.subhero .subhero__title{margin-inline:auto!important;text-align:center!important;transform:none!important}
+body.lumo-v105 .subpage--works .subhero__lead,body.lumo-v105 .subpage--services>.subhero .subhero__lead,body.lumo-v105 .subpage--process>.subhero .subhero__lead{margin-inline:auto!important;text-align:center!important;max-width:690px!important}
+/* Portfolio: remove empty green bands and reduce oversized cards without clipping both 3D faces. */
+body.lumo-v105 .subpage--works .works-grid{padding:12px 0 88px!important;gap:29px 20px!important;background:transparent!important;box-shadow:none!important}
+body.lumo-v105 .subpage--works .works-grid__cell{border:none!important;padding:0!important;overflow:visible!important}
+body.lumo-v105 .subpage--works .portfolio-tile{height:clamp(320px,25.5vw,380px)!important;width:100%!important;overflow:visible!important;transform:scale(.965)!important;transform-origin:50% 50%}
+body.lumo-v105 .subpage--works .portfolio-tile__face--front{background:#142b22!important;overflow:hidden!important}
+body.lumo-v105 .subpage--works .portfolio-tile__media{background:#142b22!important;flex:1 1 auto!important;min-height:0!important;overflow:hidden!important}
+body.lumo-v105 .subpage--works .portfolio-tile__media img{width:100%;height:100%;object-fit:cover!important;object-position:center!important}
+body.lumo-v105 .subpage--works .portfolio-tile__head{height:68px!important;min-height:68px!important;padding:11px 17px!important;background:linear-gradient(105deg,#172c24,#1d3029)!important;gap:4px!important}
+body.lumo-v105 .subpage--works .portfolio-tile__head strong{font-size:clamp(18px,1.5vw,23px)!important}
+body.lumo-v105 .portfolio-tile__rotator{transform-origin:center center!important}
+body.lumo-v105 .chapter--selected .selected__flip{overflow:visible!important}
+body.lumo-v105 .chapter--selected .selected__flip-inner{border-radius:13px;transform-origin:center center}
+body.lumo-v105 .chapter--selected .selected__shot{overflow:hidden!important}
+body.lumo-v105 .chapter--selected .selected__reveal{overflow:hidden!important}
+/* Single continuous canvas under gallery: hide old colored translucent border layers. */
+body.lumo-v105 .subpage--works .works-grid::before,body.lumo-v105 .subpage--works .works-grid::after{content:none!important;display:none!important}
+body.lumo-v105 .subpage--works .portfolio-tile__face--front::before,body.lumo-v105 .subpage--works .portfolio-tile__face--front::after{content:none!important;display:none!important}
+/* A real video gradient in About/Process + mouse-reactive light. */
+body.lumo-v105[data-v10-theme='about'],body.lumo-v105[data-v10-theme='process']{background:#0b2119!important}
+body.lumo-v105[data-v10-theme='about'] .subpage--about,body.lumo-v105[data-v10-theme='process'] .subpage--process{background:transparent!important;isolation:auto!important;overflow:visible!important}
+body.lumo-v105[data-v10-theme='about'] .subpage--about::before,body.lumo-v105[data-v10-theme='process'] .subpage--process::before{content:none!important;animation:none!important;display:none!important}
+body.lumo-v105 .v105-gradient-video,body.lumo-v105 .v105-gradient-reactive{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;border:0;outline:0}
+body.lumo-v105 .v105-gradient-video{object-fit:cover;opacity:.98}
+body.lumo-v105 .v105-gradient-reactive{background:radial-gradient(ellipse 46% 37% at var(--v105-x,55%) var(--v105-y,40%),rgba(170,225,199,.29),transparent 82%),radial-gradient(ellipse 54% 48% at calc(100% - var(--v105-x,55%)) calc(100% - var(--v105-y,40%)),rgba(158,81,126,.15),transparent 83%);mix-blend-mode:screen;opacity:.9;transition:opacity .3s}
+body.lumo-v105[data-v10-theme='about'] :is(.subpage--about,.footer),body.lumo-v105[data-v10-theme='process'] :is(.subpage--process,.footer){position:relative;z-index:1}
+body.lumo-v105[data-v10-theme='about'] :is(.v8-about-hero,.v8-about-body,.v8-capabilities,.about-tech),body.lumo-v105[data-v10-theme='process'] :is(.v8-process-hero,.process-journal){background:transparent!important;box-shadow:none!important}
+body.lumo-v105[data-v10-theme='about'] .footer,body.lumo-v105[data-v10-theme='process'] .footer{background:linear-gradient(180deg,rgba(10,26,21,.14),rgba(11,29,25,.71))!important}
+/* Enriched cursor vapor must never become a bright ribbon. */
+body.lumo-v105 .v105-vapor{position:absolute!important;inset:0;width:100%;height:100%;display:block;mix-blend-mode:screen;pointer-events:none;z-index:14;opacity:.96}
+/* Original menus stay usable on narrow screens. */
+@media(max-width:760px){body.lumo-v105 .menu-panel{right:14px!important;top:76px!important;width:min(390px,calc(100vw - 28px))!important;max-height:calc(100dvh - 87px)!important;padding:24px!important}body.lumo-v105 .menu-panel nav a{font-size:clamp(23px,6vw,30px)!important;padding:10px 0!important}body.lumo-v105 .subpage--works .portfolio-tile{height:clamp(306px,94vw,405px)!important;transform:scale(.96)!important}body.lumo-v105 .subpage--works .works-grid{gap:17px!important}body.lumo-v105 .subpage--works .portfolio-tile__head{min-height:62px!important;height:62px!important}body.lumo-v105 .subpage--works .portfolio-tile__head strong{font-size:21px!important}body.lumo-v105 .subpage--works .v8-works-hero,body.lumo-v105 .subpage--services>.subhero,body.lumo-v105 .subpage--process>.subhero{min-height:68svh!important;padding-top:85px!important;padding-bottom:24px!important}}
+@media(prefers-reduced-motion:reduce){body.lumo-v105 .v105-vapor,body.lumo-v105 .v105-gradient-video{display:none!important}body.lumo-v105[data-v10-theme='about'],body.lumo-v105[data-v10-theme='process']{background:linear-gradient(125deg,#122c21,#3a2931,#203e34)!important}}

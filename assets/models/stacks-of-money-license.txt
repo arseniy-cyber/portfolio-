@@ -1,0 +1,6 @@
+3D model: "stacks of money" by hmzabanna
+Source: https://sketchfab.com/3d-models/stacks-of-money-3c9de90c6dc94b989b27d8de2341f1ac
+Creator: https://sketchfab.com/hmzabanna
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+Changes: imported and displayed with custom lighting, framing and interactive animation on Lumo Sites.
