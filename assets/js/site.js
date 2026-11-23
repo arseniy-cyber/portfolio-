@@ -25,6 +25,13 @@ if(form){
  form.addEventListener('submit',async e=>{
   e.preventDefault();
   if(sending||!form.reportValidity())return;
+  const turnstileBox=document.getElementById('lumo-turnstile');
+  const requireTurnstile=Boolean(turnstileBox?.dataset.sitekey?.trim());
+  const turnstileToken=requireTurnstile?window.turnstile?.getResponse?.(turnstileBox)||'':'';
+  if(requireTurnstile&&!turnstileToken){
+   if(result&&message){result.hidden=false;result.classList.remove('is-success');result.classList.add('is-error');message.textContent='Подтверди проверку безопасности перед отправкой.';}
+   return;
+  }
   const fd=new FormData(form);
   const name=String(fd.get('name')||'').trim().slice(0,100);
   const contact=String(fd.get('contact')||'').trim().slice(0,200);
@@ -48,7 +55,7 @@ if(form){
   try{
    const response=await fetch(endpoint,{
     method:'POST',mode:'cors',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({name,contact,task}),signal:controller.signal
+    body:JSON.stringify({name,contact,task,...(requireTurnstile?{turnstileToken}:{})}),signal:controller.signal
    });
    const data=await response.json().catch(()=>null);
    if(!response.ok||data?.success!==true)throw new Error(`Submission failed (${response.status})`);
@@ -66,6 +73,7 @@ if(form){
      :'Не удалось отправить заявку. Проверь интернет и попробуй ещё раз.';
    }
   }finally{
+   if(requireTurnstile)window.turnstile?.reset?.(turnstileBox);
    clearTimeout(timeout);
    sending=false;
    form.removeAttribute('aria-busy');
