@@ -1,28 +1,75 @@
-// Deploy separately in Cloudflare Workers; this file is NOT used by GitHub Pages.
-// Required secrets: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, TURNSTILE_SECRET.
-// Before enabling Turnstile frontend, deploy this worker and configure the secrets.
-const ALLOWED_ORIGIN='https://lumosites.ru';
-function cors(origin){return {'Access-Control-Allow-Origin':origin==='https://www.lumosites.ru'?'https://www.lumosites.ru':ALLOWED_ORIGIN,'Access-Control-Allow-Methods':'POST, OPTIONS','Access-Control-Allow-Headers':'Content-Type','Vary':'Origin'};}
-function response(payload,status,origin){return new Response(JSON.stringify(payload),{status,headers:{'Content-Type':'application/json; charset=utf-8',...cors(origin)}});}
-export default {async fetch(request,env){
- const origin=request.headers.get('Origin')||'';
- if(request.method==='OPTIONS')return new Response(null,{status:204,headers:cors(origin)});
- if(request.method!=='POST')return response({success:false,error:'Method not allowed'},405,origin);
- if(![ALLOWED_ORIGIN,'https://www.lumosites.ru'].includes(origin))return response({success:false,error:'Origin denied'},403,origin);
- let payload;try{payload=await request.json();}catch{return response({success:false,error:'Invalid JSON'},400,origin);}
- const name=String(payload.name||'').trim().slice(0,100);
- const contact=String(payload.contact||'').trim().slice(0,200);
- const task=String(payload.task||'').trim().slice(0,3000);
- const token=String(payload.turnstileToken||'');
- if(!name||!contact||!task)return response({success:false,error:'Missing fields'},400,origin);
- if(!env.TURNSTILE_SECRET||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return response({success:false,error:'Server configuration incomplete'},503,origin);
- if(!token)return response({success:false,error:'Challenge required'},403,origin);
- const verifyForm=new FormData();verifyForm.append('secret',env.TURNSTILE_SECRET);verifyForm.append('response',token);
- verifyForm.append('remoteip',request.headers.get('CF-Connecting-IP')||'');
- let checked;try{const r=await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify',{method:'POST',body:verifyForm});checked=await r.json();}catch{return response({success:false,error:'Verification failed'},502,origin);}
- if(!checked.success)return response({success:false,error:'Challenge rejected'},403,origin);
- const text=`Новая заявка Lumo Sites\nИмя: ${name}\nКонтакт: ${contact}\n${task}`;
- const tg=await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text})});
- let result;try{result=await tg.json();}catch{result={};}
- return result.ok?response({success:true},200,origin):response({success:false,error:'Telegram delivery failed'},502,origin);
- }};
+// Publish this file to your existing Cloudflare Worker: lumo-applications.
+// Existing encrypted environment secrets: BOT_TOKEN, CHAT_ID, TURNSTILE_SECRET.
+// Important: deploy the GitHub Pages site with the Turnstile Site Key first.
+const ALLOWED_ORIGINS = [
+  'https://arseniy-cyber.github.io',
+  'https://lumosites.ru',
+  'https://www.lumosites.ru'
+];
+
+export default {
+  async fetch(request, env) {
+    const origin = request.headers.get('Origin') || '';
+    const allowed = ALLOWED_ORIGINS.includes(origin);
+    const headers = {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': allowed ? origin : '',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Vary': 'Origin'
+    };
+    const reply = (body, status) => new Response(JSON.stringify(body), { status, headers });
+
+    if (!allowed) return reply({ success: false, error: 'Forbidden' }, 403);
+    if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
+    if (request.method !== 'POST') return reply({ success: false, error: 'Method not allowed' }, 405);
+
+    try {
+      const raw = await request.text();
+      if (raw.length > 10000) return reply({ success: false, error: 'Too large' }, 413);
+
+      let data;
+      try { data = JSON.parse(raw); }
+      catch { return reply({ success: false, error: 'Invalid JSON' }, 400); }
+
+      const name = String(data.name || '').trim().slice(0, 100);
+      const contact = String(data.contact || '').trim().slice(0, 200);
+      const task = String(data.task || '').trim().slice(0, 3000);
+      const token = String(data.turnstileToken || '').trim();
+
+      if (!name || !contact || !task) return reply({ success: false, error: 'Заполните все поля' }, 400);
+      if (!env.TURNSTILE_SECRET || !env.BOT_TOKEN || !env.CHAT_ID)
+        return reply({ success: false, error: 'Server configuration incomplete' }, 503);
+      if (!token) return reply({ success: false, error: 'Turnstile required' }, 403);
+
+      const verification = new FormData();
+      verification.append('secret', env.TURNSTILE_SECRET);
+      verification.append('response', token);
+      const ip = request.headers.get('CF-Connecting-IP');
+      if (ip) verification.append('remoteip', ip);
+
+      const verifyResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST', body: verification
+      });
+      if (!verifyResponse.ok) return reply({ success: false, error: 'Verification unavailable' }, 502);
+      const verified = await verifyResponse.json();
+      if (!verified.success) return reply({ success: false, error: 'Turnstile verification failed' }, 403);
+
+      const message = 'НОВАЯ ЗАЯВКА — LUMO SITES\n\n' +
+        'Имя: ' + name + '\n' +
+        'Контакт: ' + contact + '\n\n' +
+        'Описание проекта:\n' + task;
+
+      const response = await fetch(`https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: env.CHAT_ID, text: message })
+      });
+      if (!response.ok) throw new Error('Telegram delivery failed');
+      return reply({ success: true }, 200);
+    } catch (error) {
+      console.error('Application failed', error.message);
+      return reply({ success: false }, 500);
+    }
+  }
+};

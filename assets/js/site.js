@@ -27,7 +27,7 @@ if(form){
   if(sending||!form.reportValidity())return;
   const turnstileBox=document.getElementById('lumo-turnstile');
   const requireTurnstile=Boolean(turnstileBox?.dataset.sitekey?.trim());
-  const turnstileToken=requireTurnstile?window.turnstile?.getResponse?.(turnstileBox)||'':'';
+  const turnstileToken=requireTurnstile?window.lumoTurnstileGetToken?.()||'':'';
   if(requireTurnstile&&!turnstileToken){
    if(result&&message){result.hidden=false;result.classList.remove('is-success');result.classList.add('is-error');message.textContent='Подтверди проверку безопасности перед отправкой.';}
    return;
@@ -73,7 +73,7 @@ if(form){
      :'Не удалось отправить заявку. Проверь интернет и попробуй ещё раз.';
    }
   }finally{
-   if(requireTurnstile)window.turnstile?.reset?.(turnstileBox);
+   if(requireTurnstile)window.lumoTurnstileReset?.();
    clearTimeout(timeout);
    sending=false;
    form.removeAttribute('aria-busy');
