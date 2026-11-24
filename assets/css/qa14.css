@@ -54,19 +54,19 @@
 .scene-gallery .rail-work:hover .rail-shot img{transform:none!important;}
 .scene-gallery .rail-shot::after,.scene-gallery .rail-ambient{opacity:0!important;}
 .catalogue-thumb img{object-fit:cover!important;object-position:var(--qa15-catalogue-focus,50% 50%)!important;filter:none!important;}
-.rail-shot:has(img[src="assets/img/cards/iphone.webp"]){--qa15-card-focus:50% 34%}
-.catalogue-thumb:has(img[src="assets/img/cards/iphone.webp"]){--qa15-catalogue-focus:70% 50%}
-.rail-shot:has(img[src="assets/img/cards/lav-parfum.webp"]){--qa15-card-focus:50% 47%}
-.catalogue-thumb:has(img[src="assets/img/cards/lav-parfum.webp"]){--qa15-catalogue-focus:39% 50%}
-.rail-shot:has(img[src="assets/img/cards/detailing.webp"]){--qa15-card-focus:50% 50%}
-.catalogue-thumb:has(img[src="assets/img/cards/detailing.webp"]){--qa15-catalogue-focus:64% 50%}
-.rail-shot:has(img[src="assets/img/cards/niks.webp"]){--qa15-card-focus:50% 53%}
-.catalogue-thumb:has(img[src="assets/img/cards/niks.webp"]){--qa15-catalogue-focus:63% 50%}
-.rail-shot:has(img[src="assets/img/cards/lumo-parfum.webp"]){--qa15-card-focus:50% 48%}
-.catalogue-thumb:has(img[src="assets/img/cards/lumo-parfum.webp"]){--qa15-catalogue-focus:69% 50%}
-.rail-shot:has(img[src="assets/img/cards/mmrsiq.webp"]){--qa15-card-focus:50% 53%}
-.catalogue-thumb:has(img[src="assets/img/cards/mmrsiq.webp"]){--qa15-catalogue-focus:54% 50%}
-.rail-shot:has(img[src="assets/img/cards/shurubor.webp"]){--qa15-card-focus:50% 53%}
-.catalogue-thumb:has(img[src="assets/img/cards/shurubor.webp"]){--qa15-catalogue-focus:65% 50%}
-.rail-shot:has(img[src="assets/img/cards/sad-kofe.webp"]){--qa15-card-focus:50% 52%}
-.catalogue-thumb:has(img[src="assets/img/cards/sad-kofe.webp"]){--qa15-catalogue-focus:55% 50%}
+.rail-shot:has(img[src="assets/img/portfolio-iphone-qa16.webp"]){--qa15-card-focus:50% 34%}
+.catalogue-thumb:has(img[src="assets/img/portfolio-iphone-qa16.webp"]){--qa15-catalogue-focus:70% 50%}
+.rail-shot:has(img[src="assets/img/portfolio-lav-parfum-qa16.webp"]){--qa15-card-focus:50% 47%}
+.catalogue-thumb:has(img[src="assets/img/portfolio-lav-parfum-qa16.webp"]){--qa15-catalogue-focus:39% 50%}
+.rail-shot:has(img[src="assets/img/portfolio-detailing-qa16.webp"]){--qa15-card-focus:50% 50%}
+.catalogue-thumb:has(img[src="assets/img/portfolio-detailing-qa16.webp"]){--qa15-catalogue-focus:64% 50%}
+.rail-shot:has(img[src="assets/img/portfolio-niks-qa16.webp"]){--qa15-card-focus:50% 53%}
+.catalogue-thumb:has(img[src="assets/img/portfolio-niks-qa16.webp"]){--qa15-catalogue-focus:63% 50%}
+.rail-shot:has(img[src="assets/img/portfolio-lumo-parfum-qa16.webp"]){--qa15-card-focus:50% 48%}
+.catalogue-thumb:has(img[src="assets/img/portfolio-lumo-parfum-qa16.webp"]){--qa15-catalogue-focus:69% 50%}
+.rail-shot:has(img[src="assets/img/portfolio-mmrsiq-qa16.webp"]){--qa15-card-focus:50% 53%}
+.catalogue-thumb:has(img[src="assets/img/portfolio-mmrsiq-qa16.webp"]){--qa15-catalogue-focus:54% 50%}
+.rail-shot:has(img[src="assets/img/portfolio-shurubor-qa16.webp"]){--qa15-card-focus:50% 53%}
+.catalogue-thumb:has(img[src="assets/img/portfolio-shurubor-qa16.webp"]){--qa15-catalogue-focus:65% 50%}
+.rail-shot:has(img[src="assets/img/portfolio-sad-kofe-qa16.webp"]){--qa15-card-focus:50% 52%}
+.catalogue-thumb:has(img[src="assets/img/portfolio-sad-kofe-qa16.webp"]){--qa15-catalogue-focus:55% 50%}

@@ -1,0 +1,12 @@
+/* Portfolio category switch, independent of other pages. */
+.is-inner[data-page=works] .filter-row{display:inline-grid!important;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:5px!important;padding:5px!important;border:1px solid #aecac0;border-radius:18px;background:#dceae4;box-shadow:0 8px 24px #153e370c;width:min(100%,490px);margin-bottom:clamp(32px,4vw,60px);box-sizing:border-box;}
+.is-inner[data-page=works] .filter-row .filter{position:relative;display:flex!important;align-items:center;justify-content:center;min-width:0;min-height:48px;padding:10px 12px!important;margin:0!important;border:1px solid transparent!important;border-radius:13px!important;background:transparent!important;color:#28534a!important;font:500 13px/1.25 var(--sans,Arial,sans-serif);white-space:nowrap!important;transition:background .28s ease,color .28s ease,box-shadow .28s ease,border-color .28s ease;transform:none!important;}
+.is-inner[data-page=works] .filter-row .filter:hover{background:#f1f7f3!important;color:#153e37!important;border-color:#b6d0c5!important;}
+.is-inner[data-page=works] .filter-row .filter.active,.is-inner[data-page=works] .filter-row .filter[aria-pressed=true]{background:#245e51!important;color:#fff!important;border-color:#245e51!important;box-shadow:0 4px 12px #153e3730;}
+.is-inner[data-page=works] .filter-row .filter:focus-visible{outline:2px solid #246e60;outline-offset:3px;}
+.is-inner[data-page=works] .catalogue-item[hidden]{display:none!important;}
+@media(max-width:940px){.is-inner[data-page=works] .filter-row{display:grid!important;margin-inline:auto;width:min(100%,490px);}}
+@media(max-width:375px){.is-inner[data-page=works] .filter-row .filter{font-size:11px;padding:8px 3px!important;}}
+@media(prefers-reduced-motion:reduce){.is-inner[data-page=works] .filter-row .filter{transition:none;}}
+/* Filtering owns the reveal timing; avoid stacking the older scroll reveal transition. */
+.is-inner[data-page=works] .catalogue-item.directed-in{transition:none!important;}
