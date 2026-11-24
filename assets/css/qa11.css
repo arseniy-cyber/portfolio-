@@ -1,0 +1,73 @@
+/* QA11: independent initial screen, contact form and lab refinements. */
+.scene-intro .intro-rest{position:absolute;inset:0;z-index:5;overflow:visible;transform:none;will-change:auto;contain:none;isolation:auto}
+.scene-intro .intro-rest[hidden]{display:block!important;visibility:hidden!important;pointer-events:none!important}
+.scene-intro #intro-camera{display:none!important;will-change:auto!important;transform-style:flat!important;perspective:none!important}
+.scene-intro #intro-camera.qa11-zooming{display:flex!important;pointer-events:none!important;z-index:5}
+.scene-intro .intro-rest .intro-word{transform:translate(-50%,-50%)!important;margin:0!important;backface-visibility:visible!important;will-change:auto!important;contain:none!important}
+.scene-intro .intro-rest .intro-first{--intro-t:0;will-change:auto!important;backface-visibility:visible!important}
+.lumo-static .scene-intro #intro-camera{display:none!important}
+/* Warm porcelain, cocoa type and deep copper CTA instead of an unreadable dark gradient. */
+.is-inner[data-page=services] .services-after{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:clamp(22px,4vw,64px)!important;background:linear-gradient(120deg,#fcf5e9,#ead8bf)!important;border:1px solid #c8ab8c!important;border-radius:24px!important;padding:clamp(25px,4vw,58px)!important;box-shadow:0 16px 54px #6a422514!important;color:#3a251a!important}
+.is-inner[data-page=services] .services-after .qa11-service-kicker{display:block;color:#745137;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.is-inner[data-page=services] .services-after h2{font-size:clamp(30px,3.5vw,52px)!important;line-height:1.08!important;color:#3b271b!important;margin:0 0 14px!important;max-width:100%!important}
+.is-inner[data-page=services] .services-after p{font-size:clamp(14px,1.1vw,17px)!important;line-height:1.65!important;color:#634831!important;margin:0!important;max-width:67ch!important}
+.is-inner[data-page=services] .services-after .qa11-service-link{display:inline-flex!important;align-items:center!important;justify-content:space-between!important;gap:25px!important;min-height:52px!important;padding:15px 23px!important;background:#633b29!important;color:#fff8ef!important;border:1px solid #633b29!important;border-radius:999px!important;font-size:14px!important;white-space:nowrap!important;text-decoration:none!important;box-shadow:none!important;transition:background .3s,transform .3s!important}
+.is-inner[data-page=services] .services-after .qa11-service-link:hover{background:#47291d!important;transform:translateY(-2px)}
+.is-inner[data-page=services] .services-after .qa11-service-link:focus-visible{outline:3px solid #9d6848;outline-offset:4px}
+@media(max-width:760px){.is-inner[data-page=services] .services-after{grid-template-columns:1fr!important;gap:23px!important}.is-inner[data-page=services] .services-after .qa11-service-link{justify-self:start;white-space:normal!important;max-width:100%}}
+/* Form: consistent field geometry and comfortable mobile touch targets. */
+.is-inner[data-page=contact] .contact-layout{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)!important;align-items:start!important;gap:clamp(24px,5vw,88px)!important}
+.is-inner[data-page=contact] .brief-form{display:grid!important;gap:24px!important;min-width:0!important;width:100%!important;padding:clamp(22px,3.5vw,48px)!important;border-radius:24px!important;overflow:visible!important;box-sizing:border-box}
+.qa11-form-head{display:grid;gap:8px;padding-bottom:18px;border-bottom:1px solid #b6c5aa}
+.qa11-form-head h3{font-size:clamp(26px,3vw,38px);line-height:1.12;color:#243d25;margin:0!important}
+.qa11-form-head p{font-size:14px;line-height:1.55;color:#435940;margin:0!important}
+.qa11-form-note{font-size:12px;color:#52674b}
+.is-inner[data-page=contact] .brief-form .form-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:21px 18px!important;align-items:start!important;margin:0!important}
+.is-inner[data-page=contact] .brief-form .form-grid>label{display:grid!important;grid-template-rows:auto auto;align-content:start;gap:9px!important;min-width:0!important;margin:0!important;font-size:13px!important;line-height:1.4!important}
+.is-inner[data-page=contact] .brief-form .form-grid>label.full{grid-column:1/-1!important}
+.qa11-field-label{display:block;font-weight:600;min-height:1.4em}
+.qa11-required{color:#486c39}
+.is-inner[data-page=contact] .brief-form .form-grid :is(input,select,textarea){box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;padding:13px 14px!important;border:1px solid #a8b99b!important;border-radius:12px!important;background:#f5f7ee!important;color:#243d25!important;font-size:16px!important;line-height:1.45!important;box-shadow:none!important;min-height:52px!important;height:52px!important}
+.is-inner[data-page=contact] .brief-form .form-grid select{appearance:none!important;padding-right:38px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='m1 1 6 6 6-6' fill='none' stroke='%233b5936' stroke-width='1.6'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 15px center!important;background-size:14px 9px!important;text-overflow:ellipsis}
+.is-inner[data-page=contact] .brief-form .form-grid textarea{height:auto!important;min-height:132px!important;resize:vertical}
+.is-inner[data-page=contact] .brief-form .form-grid :is(input,textarea)::placeholder{color:#62725c!important;opacity:1!important}
+.is-inner[data-page=contact] .brief-form .form-grid :is(input,select,textarea):focus-visible{outline:2px solid #54794b!important;outline-offset:2px!important}
+.is-inner[data-page=contact] .brief-form .consent{display:grid!important;grid-template-columns:20px minmax(0,1fr)!important;align-items:start!important;gap:12px!important;margin:0!important;line-height:1.55!important;font-size:13px!important;cursor:pointer;min-height:44px}
+.is-inner[data-page=contact] .brief-form .consent input{width:18px!important;height:18px!important;min-height:18px!important;min-width:18px!important;padding:0!important;margin:2px 0 0!important;accent-color:#42653a;appearance:auto!important;border-radius:3px!important}
+.is-inner[data-page=contact] #lumo-turnstile{width:100%;min-width:0;max-width:100%;font-size:12px;line-height:1.5;color:#4b6045}
+.is-inner[data-page=contact] .brief-form .form-send{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;width:100%!important;min-height:54px!important;padding:15px 20px!important;border-radius:14px!important;font-size:15px!important;line-height:1.3!important;margin:0!important;text-align:left!important}
+.is-inner[data-page=contact] .brief-form .form-status{margin:0!important;padding:10px 12px;border-radius:8px;background:#e5eddc;color:#244126;font-size:13px;overflow-wrap:anywhere}
+.is-inner[data-page=contact] .brief-form .form-status.error{background:#f7e4db;color:#762e22}
+@media(max-width:900px){.is-inner[data-page=contact] .contact-layout{grid-template-columns:minmax(0,1fr)!important}}
+@media(max-width:560px){.is-inner[data-page=contact] .brief-form .form-grid{grid-template-columns:minmax(0,1fr)!important;gap:18px!important}.is-inner[data-page=contact] .brief-form{padding:20px!important;gap:20px!important}.is-inner[data-page=contact] .brief-form .form-grid>label{grid-column:1/-1!important}.is-inner[data-page=contact] .contact-section .section-inner{width:auto!important;margin-inline:14px!important}}
+/* The preview is an independent document. Keep option differences on small screens, too. */
+body[class*="theme-"][class*="layout-"] .sample small{z-index:2;max-width:calc(100% - 30px);line-height:1.4;overflow-wrap:anywhere;color:var(--text);background:var(--bg);border-radius:5px;padding:5px 8px}
+body[class*="theme-"][class*="layout-"] :is(.hero,.section,.tile,.story,.sample){min-width:0}
+body[class*="theme-"][class*="layout-"] :is(.hero h1,.section h2,.tile h3){overflow-wrap:anywhere;word-break:normal}
+body[class*="theme-"][class*="layout-"] .tile details{overflow-wrap:anywhere}
+body[class*="theme-"][class*="layout-"] .cta{min-height:44px;max-width:100%;line-height:1.4;overflow-wrap:anywhere}
+body[class*="theme-"][class*="layout-"] :is(a,summary):focus-visible{outline:2px solid var(--text);outline-offset:4px}
+body[class*="theme-"][class*="layout-"] .tile img{display:block;object-fit:contain}
+body[class*="theme-"][class*="layout-"] .button-text .cta{background:transparent}
+body[class*="theme-"][class*="layout-"] .sample img{max-width:100%}
+@media(max-width:720px){
+ body[class*="theme-"][class*="layout-"] .hero h1{max-width:100%}
+ body.layout-wide .hero{min-height:540px;align-content:end;isolation:isolate}
+ body.layout-wide .hero .sample{height:100%;min-height:0;padding:15px}
+ body.layout-wide .hero .sample img{height:45%;max-height:245px;width:100%;align-self:start}
+ body.layout-wide .hero>div:first-child{max-width:100%;margin-top:230px}
+ body.layout-editorial .hero .sample{grid-column:2/7;max-width:100%;height:230px;min-height:0}
+ body.layout-center .hero .sample{min-height:220px;height:230px}
+ body.layout-reverse .hero .sample{min-height:220px;height:240px}
+ body.layout-reverse .hero .sample img{height:100%}
+ body.layout-reverse .hero>div:first-child{text-align:right}
+ body.layout-split .hero>div:first-child{text-align:left}
+ body.layout-center .hero>div:first-child{text-align:center}
+}
+@media(max-width:400px){body[class*="theme-"][class*="layout-"] .hero,body[class*="theme-"][class*="layout-"] .section{padding-inline:18px}body[class*="theme-"][class*="layout-"] .tile{padding:14px}body.cards-borderless .tile{padding-inline:0}body.cards-graphic .tile{box-shadow:4px 4px 0 color-mix(in srgb,var(--text),transparent 65%)}}
+
+body[class*="theme-"][class*="layout-"] .cta{color:var(--bg)!important;background:var(--contrast)}
+body.button-outline .cta,body.button-text .cta{color:var(--text)!important;background:transparent!important}
+body.cards-graphic .tile{color:var(--bg)}
+body.cards-round .tile{background:linear-gradient(145deg,color-mix(in srgb,var(--accent),var(--bg) 20%),color-mix(in srgb,var(--accent),var(--bg) 55%))}
+.is-inner[data-page=contact] .brief-form :is(input,textarea,select){scroll-margin-top:120px;scroll-margin-bottom:35px}

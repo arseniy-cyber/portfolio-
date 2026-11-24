@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://lumosites.ru/sitemap.xml

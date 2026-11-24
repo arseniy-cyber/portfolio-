@@ -1,0 +1,71 @@
+/* QA6: corrections to QA5, no changes to approved models or films. */
+.scene-gallery .gallery-milk{background:radial-gradient(ellipse at 67% 34%,#fffdf5 0%,#edece1 54%,#dedfd1 100%)!important;background-image:radial-gradient(ellipse at 67% 34%,#fffdf5 0%,#edece1 54%,#dedfd1 100%)!important}
+.scene-gallery .statue-photo{filter:none!important}
+.scene-gallery .rail-caption{background:transparent!important}
+/* The selected burgundy film is unique to this scene. */
+.scene-process{background:#190f15!important;color:#f8f2e9!important}
+.scene-process .process-paper{background:#190f15!important;position:absolute;inset:0;overflow:hidden}
+.scene-process .qa6-orbit-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1!important;filter:none!important;transform:none!important;pointer-events:none}
+.scene-process .process-paper::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#190e17f2 0%,#190e17cb 26%,#200e1550 53%,#200e1533 72%,#190e1770 100%);pointer-events:none}
+.scene-process .process-sculptures img{opacity:.09!important;filter:grayscale(1)!important}
+.scene-process .process-orbit::before{background:radial-gradient(ellipse,#cfa6a52b,transparent 72%)!important}
+.scene-process .process-editorial h2{color:#f8f2e9!important;text-shadow:0 2px 16px #160b14b0}
+.scene-process .process-editorial h2 em{color:#e4a8b7!important}
+.scene-process .process-editorial p{color:#ead7d7!important;text-shadow:0 1px 9px #170b13}
+.scene-process .process-editorial .qa4-process-cta{background:#f0e6dc!important;border-color:#f0e6dc!important;color:#301923!important;border-radius:999px!important;box-shadow:none!important;padding-inline:19px!important}
+.scene-process .process-editorial .qa4-process-cta:hover{background:#e8bbc8!important;color:#301923!important;border-color:#e8bbc8!important}
+/* Two faces, zero separation, one card. No duplicate edges or stacked shadows. */
+.scene-process .orbit-card::before,.scene-process .orbit-card::after{display:none!important;content:none!important}
+.scene-process .orbit-card{transform-style:preserve-3d!important;isolation:auto!important;overflow:visible!important}
+.scene-process .orbit-front,.scene-process .orbit-back{inset:0!important;box-shadow:none!important;border-radius:15px!important;backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important;border:1px solid #e2d8ce!important}
+.scene-process .orbit-front{transform:none!important;background:#f8f3e9!important;color:#302022!important;justify-content:center!important;gap:10px}
+.scene-process .orbit-front p{color:#5f5250!important;margin:0!important;line-height:1.5!important}
+.scene-process .orbit-front strong{color:#302022!important;line-height:1.08!important}
+.scene-process .orbit-back{transform:rotateY(180deg)!important;background:#fff!important;color:#243f31!important}
+.scene-process .orbit-back span{white-space:nowrap!important;font-size:clamp(19px,2.1vw,34px)!important}
+.scene-process.qa6-frozen .process-sculptures img{animation-play-state:paused!important}
+.scene-process.qa6-eroding{z-index:12!important;pointer-events:none!important;will-change:clip-path;}
+.scene-process.qa6-eroding .process-orbit{pointer-events:none!important}
+.is-home #site-header.qa6-process-nav{color:#f8f2e9!important;background:transparent!important}
+/* Film fully visible on arrival. Only scrolling creates the soft exit. */
+.is-inner:is([data-page=lab],[data-page=contact],[data-page=about],[data-page=process]) .page-hero-directed::after{opacity:var(--qa6-seam,0)!important;height:var(--qa6-seam-height,32%)!important;background:linear-gradient(to bottom,transparent 0%,color-mix(in srgb,var(--qa5-join),transparent 97%) 15%,color-mix(in srgb,var(--qa5-join),transparent 83%) 35%,color-mix(in srgb,var(--qa5-join),transparent 51%) 60%,color-mix(in srgb,var(--qa5-join),transparent 14%) 84%,var(--qa5-join) 100%)!important;transition:none!important;pointer-events:none!important}
+/* About: preserve the approved card bodies; align and reset only type. */
+.is-inner[data-page=about] .studio-approach-grid{align-items:stretch}
+.is-inner[data-page=about] .studio-approach-card{display:grid!important;grid-template-rows:auto 1fr;gap:clamp(18px,2vw,27px);align-content:start;min-height:0!important;padding:clamp(21px,3vw,44px)!important}
+.is-inner[data-page=about] .studio-approach-card h3{font-family:var(--lumo-serif)!important;font-size:clamp(27px,2.6vw,39px)!important;line-height:1.13!important;letter-spacing:-.032em!important;text-wrap:pretty!important;margin:0!important;min-height:2.26em;align-self:start;overflow-wrap:normal}
+.is-inner[data-page=about] .studio-approach-card p{font-family:var(--lumo-sans)!important;font-size:clamp(14px,1vw,16px)!important;line-height:1.7!important;letter-spacing:0!important;margin:0!important;max-width:35ch;color:#3d5748!important;align-self:start}
+.qa6-contact-copy{max-width:47ch;display:grid;gap:16px;margin:24px 0 32px}.qa6-contact-copy p{margin:0!important;font-size:clamp(15px,1.1vw,17px)!important;line-height:1.74!important;color:#39594a!important}
+/* Footer: one measured editorial grid on every page, one visual CTA. */
+footer.footer{background:linear-gradient(120deg,#0b2118,#142e23)!important;color:#eef0e7!important;padding:clamp(48px,6vw,86px) var(--edge,6vw) 24px!important;min-height:0!important;display:block!important;position:relative!important}
+.qa6-footer-layout{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,90px);align-items:start}
+.qa6-footer-brand,.qa6-footer-nav,.qa6-footer-contact{display:flex;flex-direction:column;align-items:flex-start;gap:18px;min-width:0}
+.qa6-footer-brand .word-logo{color:#f4f2e6!important;font-size:clamp(33px,3vw,48px)!important;line-height:1.05!important}
+.qa6-footer-brand p{max-width:28ch;line-height:1.65;color:#bacdc1!important;font-size:15px;margin:0!important}
+.qa6-footer-label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#b9cabd;line-height:1.4}
+.qa6-footer-nav>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 25px;width:100%}
+.qa6-footer-layout a{color:#f2f0e6;text-decoration:none!important;transition:color .3s ease;font-size:14px;line-height:1.5}
+.qa6-footer-layout a:hover,.qa6-footer-layout a:focus-visible{color:#e5bdc5;text-decoration:underline!important;text-underline-offset:4px}
+.qa6-footer-contact .qa6-footer-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid #a1bcab;border-radius:999px;padding:12px 16px;min-height:44px;color:#f5f0e8;white-space:nowrap}
+.qa6-footer-contact .qa6-footer-telegram{color:#c7d8cd;overflow-wrap:anywhere}
+.qa6-footer-bottom{border-top:1px solid #a4bead35;max-width:1500px;margin:clamp(35px,5vw,64px) auto 0;padding-top:18px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;color:#b6c9bd;font-size:11px;line-height:1.5}
+.qa6-footer-bottom .qa4-license-note{margin:0!important;position:static!important;display:inline!important;color:inherit!important;font-size:inherit!important;white-space:normal!important}.qa6-footer-bottom .qa4-license-note a{color:inherit!important}
+@media(max-width:900px){.qa6-footer-layout{grid-template-columns:1fr 1fr;gap:32px}.qa6-footer-brand{grid-column:1/-1}.qa6-footer-brand p{max-width:42ch}.is-inner[data-page=about] .studio-approach-card h3{min-height:0}}
+@media(max-width:540px){.qa6-footer-layout{grid-template-columns:1fr;gap:30px}.qa6-footer-brand{grid-column:auto}.qa6-footer-nav>div{max-width:350px}.qa6-footer-bottom{justify-content:flex-start;flex-direction:column;align-items:flex-start}.is-inner[data-page=about] .studio-approach-card{gap:14px}.scene-process .process-paper::after{background:linear-gradient(180deg,#190e17de 0%,#190e17b0 30%,#190e1728 70%,#190e1760 100%)}.scene-process .orbit-front,.scene-process .orbit-back{border-radius:10px!important}.scene-process .orbit-back span{font-size:18px!important}}
+@media(prefers-reduced-motion:reduce){.scene-process .qa6-orbit-film{display:none!important}.scene-process .process-paper{background:#190f15 url('../img/qa6-orbit.webp') center/cover no-repeat!important}.is-inner:is([data-page=lab],[data-page=contact],[data-page=about],[data-page=process]) .page-hero-directed::after{display:none!important}}
+/* Explicit colors at the two home chapters, independent of earlier header rules. */
+.is-home #site-header.qa6-process-nav .word-logo,.is-home #site-header.qa6-process-nav .desktop-nav,.is-home #site-header.qa6-process-nav .contact-pill{color:#f8f2e9!important}
+.is-home #site-header.on-light .desktop-nav,.is-home #site-header.on-light .contact-pill{color:#17372a!important}
+.is-inner:is([data-page=lab],[data-page=contact],[data-page=process]) .page-hero-directed{min-height:100svh!important}
+.is-inner:is([data-page=lab],[data-page=contact],[data-page=about],[data-page=process]) .page-hero-directed::after{height:var(--qa6-seam-height,0%)!important}
+/* The selected video must remain available as a poster even with no JS. */
+.scene-process .process-paper{background:#190f15 url('../img/qa6-orbit.webp') center/cover no-repeat!important}
+/* Only photographic sculpture cut-outs; remove QA5's architectural illustration. */
+.is-inner[data-page=works] .page-hero-directed{background:radial-gradient(ellipse at 78% 42%,#3c5141 0%,#193126 44%,#0c2118 78%)!important}
+.is-inner[data-page=works] .page-hero-directed::before{background:linear-gradient(90deg,#0a1d14e0 0%,#0a1d14a0 35%,#0a1d1415 72%,#0a1d1440 100%)!important}
+.qa6-works-sculptures{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.qa6-works-sculptures img{position:absolute;object-fit:contain;object-position:bottom;filter:grayscale(.75) sepia(.12)}
+.qa6-works-sculptures img:first-child{right:1%;bottom:-11%;width:42%;height:91%;opacity:.71}
+.qa6-works-sculptures img:last-child{right:29%;bottom:-6%;width:28%;height:65%;opacity:.17}
+@media(max-width:700px){.qa6-works-sculptures img:first-child{right:-23%;width:96%;opacity:.33}.qa6-works-sculptures img:last-child{right:31%;width:55%;opacity:.13}}
+.is-inner[data-page=about] .about-hero-stage:not(.is-motion) .page-hero-directed{min-height:100svh!important}
+@media(min-width:1350px){.is-inner[data-page=about] .studio-approach-card h3{min-height:1.13em}.is-inner[data-page=about] .studio-approach-card{gap:clamp(18px,1.8vw,26px)}}

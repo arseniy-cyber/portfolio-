@@ -1,0 +1,34 @@
+/* QA7: scoped visual repairs. All previously approved animations remain. */
+.scene-process .process-paper{background:#190f15!important}
+.scene-process .qa6-orbit-film{inset:auto!important;left:auto!important;right:2%!important;top:50%!important;width:min(74vw,135svh)!important;height:auto!important;aspect-ratio:16/9;transform:translateY(-50%)!important;object-fit:contain!important;object-position:center!important;mask-image:linear-gradient(90deg,transparent 0%,#0005 13%,#000 31%,#000 78%,transparent 100%),linear-gradient(0deg,transparent,#000 14%,#000 86%,transparent);mask-composite:intersect;-webkit-mask-composite:source-in}
+.scene-process .process-paper::after{background:linear-gradient(90deg,#190e17f2 0%,#190e17cb 26%,#200e1550 53%,#200e1533 72%,#190e1770 100%);}
+.scene-process .orbit-card{border:0!important;background:transparent!important;box-shadow:none!important}
+.scene-process .orbit-front,.scene-process .orbit-back{border:0!important;box-shadow:none!important}
+.scene-process .orbit-front{padding:clamp(12px,1.55vw,24px)!important;gap:9px!important}.scene-process .orbit-front strong{font-size:clamp(17px,2.05vw,31px)!important;letter-spacing:-.025em!important}.scene-process .orbit-front p{font-size:clamp(10px,.95vw,15px)!important;line-height:1.5!important}
+/* Entire replacement on the separate portfolio page. The original headline and projects are untouched. */
+.is-inner[data-page=works] .page-hero-directed{background:#050d0c url('../img/qa7-works.webp') center/cover no-repeat!important;min-height:100svh!important;isolation:isolate}
+.is-inner[data-page=works] .page-hero-directed .qa7-works-film{inset:0!important;object-fit:cover!important;object-position:center!important;z-index:0!important;opacity:1!important;filter:none!important}
+.is-inner[data-page=works] .page-hero-directed::before{z-index:1!important;background:linear-gradient(90deg,#07130feb 0%,#07130fbe 27%,#07130f75 56%,#07130f20 100%),linear-gradient(0deg,#07130f80,transparent 40%)!important}
+.is-inner[data-page=works] .page-hero-directed .page-hero-inner{z-index:2!important;position:relative}
+.is-inner[data-page=works] .page-hero-directed h1 em{color:#c0e3d3!important}.is-inner[data-page=works] .page-hero-directed p{color:#e2efe6!important}
+/* Reserve text geometry without painting glyphs, decoration or inherited shadows. */
+.lumo-type-holder:not(.lumo-type-complete)>.lumo-original-text{visibility:hidden!important;color:transparent!important;text-shadow:none!important;text-decoration:none!important;-webkit-text-stroke:0 transparent!important;filter:none!important;opacity:0!important}
+.lumo-type-holder.lumo-type-complete>.lumo-original-text{visibility:visible!important;opacity:1!important}
+.lumo-type-holder>.lumo-text-layer:empty{visibility:hidden!important;text-shadow:none!important;border-color:transparent!important}
+/* Rich, individually written service disclosures, not a repeated generic paragraph. */
+.is-inner[data-page=services] .qa7-service-body{overflow:hidden;min-width:0}
+.is-inner[data-page=services] .qa7-service-body .qa7-service-lead{font-family:var(--lumo-serif)!important;font-size:clamp(23px,2.2vw,34px)!important;letter-spacing:-.035em!important;line-height:1.13!important;color:#234534!important;margin:12px 0 22px!important;padding:0!important;max-width:100%!important}
+.qa7-service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.6vw,40px);padding:0 0 24px;align-items:start}
+.qa7-service-column{border-top:1px solid #7f6b4f48;min-width:0;padding:17px 0 0}
+.qa7-service-column h3{font-family:var(--lumo-sans)!important;font-size:12px!important;font-weight:600!important;line-height:1.4!important;letter-spacing:.07em!important;text-transform:uppercase;color:#75452f!important;margin:0 0 12px!important}
+.is-inner[data-page=services] .qa7-service-column p{font-size:clamp(14px,1.02vw,16px)!important;line-height:1.7!important;color:#3c4b3e!important;padding:0!important;margin:0!important;max-width:none!important;overflow-wrap:break-word}
+.is-inner[data-page=services] .service-details.qa-expanded .qa7-service-column{animation:qa7-detail-in .72s cubic-bezier(.2,.7,.2,1) both}.is-inner[data-page=services] .service-details.qa-expanded .qa7-service-column:nth-child(2){animation-delay:.08s}.is-inner[data-page=services] .service-details.qa-expanded .qa7-service-column:nth-child(3){animation-delay:.16s}
+@keyframes qa7-detail-in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.qa7-service-grid{grid-template-columns:1fr;gap:16px}.qa7-service-column{padding-top:12px}.qa7-service-column h3{margin-bottom:7px!important}}
+@media(max-width:700px){.scene-process .qa6-orbit-film{left:0!important;right:0!important;top:62%!important;width:100%!important;height:auto!important;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),linear-gradient(0deg,transparent,#000 17%,#000 83%,transparent);mask-composite:intersect;-webkit-mask-composite:source-in}.scene-process .orbit-front strong{font-size:clamp(14px,3.2vw,21px)!important}.scene-process .orbit-front p{font-size:clamp(9px,2.35vw,13px)!important}.is-inner[data-page=works] .page-hero-directed::before{background:linear-gradient(90deg,#07130fba,#07130f69)!important}}
+@media(prefers-reduced-motion:reduce){.scene-process .process-paper{background:#190f15 url('../img/qa6-orbit.webp') 85% center/72% auto no-repeat!important}.is-inner[data-page=works] .qa7-works-film{display:none!important}.qa7-service-column{animation:none!important}}
+
+/* The new portfolio film also joins the light gallery only when scrolling. */
+.is-inner[data-page=works]{--qa5-join:#f9f8f3}
+.is-inner[data-page=works] .page-hero-directed::after{display:block!important;content:"";position:absolute;inset:auto 0 0!important;z-index:1!important;opacity:var(--qa6-seam,0)!important;height:var(--qa6-seam-height,0%)!important;pointer-events:none;transition:none!important;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--qa5-join),transparent 90%) 25%,color-mix(in srgb,var(--qa5-join),transparent 45%) 65%,var(--qa5-join))!important}
+@media(prefers-reduced-motion:reduce){.is-inner[data-page=works] .page-hero-directed::after{display:none!important}}

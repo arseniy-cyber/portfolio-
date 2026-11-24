@@ -1,0 +1,72 @@
+/* QA14 — isolated corrections to QA13. */
+/* Desktop case artwork is a wide editorial photograph; mobile retains its original cover. */
+@media (min-width:941px) and (hover:hover) and (pointer:fine){
+ .case-top .case-top-media{height:auto!important;aspect-ratio:3.2/1;max-height:440px;min-height:0;}
+ .case-top-media picture{display:block;width:100%;height:100%}
+ .case-top-media picture img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+ .case-story .case-features{margin:60px 0 24px!important;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)!important;align-items:start!important;gap:clamp(24px,4vw,60px)!important}
+ .case-story .case-features h2{font-size:clamp(32px,3.2vw,52px)!important;line-height:1.09!important;letter-spacing:-.035em!important;margin:12px 0 0!important;max-width:100%;overflow-wrap:normal}
+ .case-story .case-features .eyebrow{margin-bottom:0!important}
+ .case-story .case-features ul{margin:0!important;align-items:stretch}
+ .case-story .next-case{margin-top:0!important;padding-top:26px!important}
+}
+@media(max-width:700px) and (orientation:portrait){
+ .scene-device .device-copy{top:max(112px,17%)!important}
+ .scene-device .device-model{top:43%!important;height:34%!important}
+ .scene-device .device-interfaces{bottom:max(5%,calc(env(safe-area-inset-bottom) + 10px))!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-auto-rows:1fr;align-items:stretch!important;gap:6px!important}
+ .scene-device .qa5-device-card.qa4-device-note{height:100%!important;box-sizing:border-box!important;align-self:stretch!important;min-height:0!important;padding:8px 6px!important}
+ .scene-process .process-editorial{top:max(119px,19%)!important;left:4%!important;width:92%!important}
+ .scene-process .process-editorial h2{font-size:clamp(39px,11.5vw,58px)!important;line-height:1.04!important}
+ .scene-process .process-editorial p.process-quiet{font-size:clamp(14px,3.8vw,17px)!important;line-height:1.45!important;max-width:37ch!important}
+ .scene-process .process-orbit{top:50%!important;height:47%!important}
+}
+@media(max-width:700px) and (orientation:portrait) and (max-height:700px){
+ .scene-device .device-copy{top:max(88px,16.5%)!important}
+ .scene-device .device-model{top:44%!important;height:30%!important}
+ .scene-device .device-interfaces{bottom:4.5%!important}
+ .scene-process .process-editorial{top:max(88px,16.5%)!important}
+ .scene-process .process-editorial h2{font-size:clamp(33px,10vw,43px)!important;margin-bottom:7px!important}
+ .scene-process .process-editorial p.process-quiet{font-size:clamp(13px,3.5vw,15px)!important;line-height:1.4!important;margin-bottom:8px!important}
+ .scene-process .process-orbit{top:54%!important;height:44%!important}
+}
+/* Never let column wrapping shrink controls as a list opens. */
+@media(max-width:940px), (pointer:coarse){
+ .is-inner[data-page=lab] .lab-console .lab-control{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:stretch!important;width:100%!important;min-width:0!important;box-sizing:border-box!important}
+ .is-inner[data-page=lab] .lab-console .lumo-select{display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;flex:none!important;align-self:stretch!important;position:relative!important}
+ .is-inner[data-page=lab] .lab-console .lumo-select-trigger{display:flex!important;width:100%!important;min-height:58px!important;height:58px!important;box-sizing:border-box!important;flex:none!important;font-size:14px!important;line-height:1.2!important;transform:none!important;scale:1!important;translate:none!important;align-items:center!important;justify-content:center!important;transition:background .2s,border-color .2s!important}
+ .is-inner[data-page=lab] .lab-console .lumo-select-menu{position:absolute!important;top:calc(100% + 6px)!important;left:0!important;right:0!important;width:100%!important;min-width:100%!important;max-width:100%!important;box-sizing:border-box!important;transform:none!important;scale:1!important;transition:opacity .18s,visibility .18s!important;overscroll-behavior:contain}
+ .is-inner[data-page=lab] .lab-console .lumo-select:not(.is-open) .lumo-select-menu{max-height:0!important;overflow:hidden!important;border-width:0!important}
+ .is-inner[data-page=lab] .lab-console .lumo-select.is-open .lumo-select-menu{max-height:min(300px,42dvh)!important;overflow-y:auto!important;visibility:visible!important;opacity:1!important}
+ .is-inner[data-page=lab] .lab-console .lumo-select-option{width:100%!important;min-height:46px!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:center!important;font-size:14px!important;line-height:1.25!important;text-align:center!important;transform:none!important;scale:1!important}
+}
+/* A picture wrapper must not change the existing mobile image frame. */
+.case-top-media picture{display:block;width:100%;height:100%}
+@media(max-width:700px) and (orientation:portrait) and (max-height:700px){.scene-device .device-model{top:47%!important;height:27%!important}}
+
+/* QA15: Keep a single flight renderer for the duration of a transition. */
+.plane-model.qa15-flight-fallback .plane-fallback{display:grid!important;opacity:1!important}
+.plane-model.qa15-flight-fallback canvas{visibility:hidden!important}
+@media(min-width:701px){.scene-intro .intro-rest .intro-word,.scene-intro .intro-rest .intro-first{transition:none!important;transform-style:flat!important;will-change:auto!important;backface-visibility:visible!important}}
+
+/* QA15 portfolio imagery: only home/gallery and catalogue cards. */
+.scene-gallery .rail-shot{background-color:var(--case-color);background-position:var(--qa15-card-focus,50% 50%)!important;}
+.scene-gallery .rail-shot img{opacity:1!important;object-fit:cover!important;object-position:var(--qa15-card-focus,50% 50%)!important;transform:none!important;filter:none!important;}
+.scene-gallery .rail-work:hover .rail-shot img{transform:none!important;}
+.scene-gallery .rail-shot::after,.scene-gallery .rail-ambient{opacity:0!important;}
+.catalogue-thumb img{object-fit:cover!important;object-position:var(--qa15-catalogue-focus,50% 50%)!important;filter:none!important;}
+.rail-shot:has(img[src="assets/img/cards/iphone.webp"]){--qa15-card-focus:50% 34%}
+.catalogue-thumb:has(img[src="assets/img/cards/iphone.webp"]){--qa15-catalogue-focus:70% 50%}
+.rail-shot:has(img[src="assets/img/cards/lav-parfum.webp"]){--qa15-card-focus:50% 47%}
+.catalogue-thumb:has(img[src="assets/img/cards/lav-parfum.webp"]){--qa15-catalogue-focus:39% 50%}
+.rail-shot:has(img[src="assets/img/cards/detailing.webp"]){--qa15-card-focus:50% 50%}
+.catalogue-thumb:has(img[src="assets/img/cards/detailing.webp"]){--qa15-catalogue-focus:64% 50%}
+.rail-shot:has(img[src="assets/img/cards/niks.webp"]){--qa15-card-focus:50% 53%}
+.catalogue-thumb:has(img[src="assets/img/cards/niks.webp"]){--qa15-catalogue-focus:63% 50%}
+.rail-shot:has(img[src="assets/img/cards/lumo-parfum.webp"]){--qa15-card-focus:50% 48%}
+.catalogue-thumb:has(img[src="assets/img/cards/lumo-parfum.webp"]){--qa15-catalogue-focus:69% 50%}
+.rail-shot:has(img[src="assets/img/cards/mmrsiq.webp"]){--qa15-card-focus:50% 53%}
+.catalogue-thumb:has(img[src="assets/img/cards/mmrsiq.webp"]){--qa15-catalogue-focus:54% 50%}
+.rail-shot:has(img[src="assets/img/cards/shurubor.webp"]){--qa15-card-focus:50% 53%}
+.catalogue-thumb:has(img[src="assets/img/cards/shurubor.webp"]){--qa15-catalogue-focus:65% 50%}
+.rail-shot:has(img[src="assets/img/cards/sad-kofe.webp"]){--qa15-card-focus:50% 52%}
+.catalogue-thumb:has(img[src="assets/img/cards/sad-kofe.webp"]){--qa15-catalogue-focus:55% 50%}
